@@ -1,0 +1,54 @@
+{
+    "schema":  "resort-vibe-environment-binding/v1",
+    "project_id":  "resort-empire-web",
+    "environment_id":  "resort-web-desktop-qbqu3hp",
+    "binding_state":  "BOUND",
+    "expected":  {
+                     "host_name":  "DESKTOP-QBQU3HP",
+                     "repo_root":  "D:\\TempleNet\\WorkSpace\\RRH",
+                     "platform":  "windows",
+                     "shell":  "powershell",
+                     "chatgpt_origin":  "https://chatgpt.com",
+                     "chatgpt_project_id":  "g-p-69251a10d1388191bbf4fa0ebd73adbd",
+                     "git_executable":  "C:\\Program Files\\Git\\cmd\\git.exe",
+                     "git_version":  "git version 2.45.1.windows.1"
+                 },
+    "evidence":  {
+                     "rebind_probe_schema":  "resort-pc-rebind-probe/v1",
+                     "rebind_accepted_at":  "2026-10-14T21:39:41Z",
+                     "source_environment_sha256":  "40e77cd37b07591a1f8f2c4ffb20d02ee07aa22c70ab65eb39bdaf8562ed0917",
+                     "source_environment_id":  "resort-web-mvv-blue",
+                     "source_host_name":  "MVV-BLUE",
+                     "source_repo_root":  "C:\\Vadim\\RRH",
+                     "observed_host_name":  "DESKTOP-QBQU3HP",
+                     "observed_repo_root":  "D:\\TempleNet\\WorkSpace\\RRH",
+                     "observed_os":  "Microsoft Windows NT 10.0.19045.0",
+                     "observed_architecture":  "X64",
+                     "observed_powershell_edition":  "Desktop",
+                     "observed_powershell_version":  "5.1.19041.6456",
+                     "observed_git_executable":  "C:\\Program Files\\Git\\cmd\\git.exe",
+                     "observed_git_version":  "git version 2.45.1.windows.1",
+                     "observed_git_top_level":  "D:/TempleNet/WorkSpace/RRH",
+                     "observed_git_branch":  "main",
+                     "observed_port_18765_listening":  false,
+                     "observed_chrome_executable":  "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
+                     "control_browser_note":  "ChatGPT/VIBE-GO is currently open in Opera GX; this does not change the dedicated Chrome/Chrome-for-Testing browser-test contract."
+                 },
+    "policy":  {
+                   "fail_closed_code":  "ENVIRONMENT_IDENTITY_MISMATCH",
+                   "fallback_to_other_host":  false,
+                   "local_mutation_bridge_enabled":  true,
+                   "project_data_enabled":  false,
+                   "legacy_workbench_enabled":  false,
+                   "automatic_rollover_enabled":  false,
+                   "automatic_cross_chat_recovery_enabled":  false
+               },
+    "installation":  {
+                         "intended_repo_relative_path":  ".vibe\\environment.json",
+                         "written_to_windows_host":  true,
+                         "git_initialized":  true,
+                         "host_bridge_installed":  true,
+                         "host_bridge_version":  "resort-host-bridge/1.1.0",
+                         "host_bridge_port":  18765
+                     }
+}
