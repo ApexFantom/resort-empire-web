@@ -50,7 +50,11 @@ Verified:
 - governed Vite dev-server lifecycle reaches RUNNING, returns HTTP 200, and terminates cleanly
 
 Local Git history:
-NOT YET MATERIALIZED; resolve through git.status and the active Git-lineage Distance.
+MATERIALIZED on main.
+Initial canonical commit: eede43ab6bbd51411df8fdc993b21fd29b180179
+Commit identity: Vadzim Mayamsin <55667882+ApexFantom@users.noreply.github.com>
+Accepted Git evidence: semantic/evidence/local-git-lineage-v1.md
+GitHub remote is NOT YET MATERIALIZED.
 
 Real Chrome DevTools MCP browser acceptance:
 NOT YET MATERIALIZED.
