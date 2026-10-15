@@ -24049,7 +24049,7 @@
     if (epoch && !Number.isFinite(epoch.startAcceptanceSequence)) {
       // An old epoch has no trustworthy turn baseline. Roll at the next safe point
       // instead of declaring a long, virtualized chat fresh.
-      epoch.legacyUnmeasured = biRolloverInScope(session);
+      epoch.legacyUnmeasured = projectRolloverInScope(session);
       epoch.startAcceptanceSequence = currentAcceptance;
       replaceRuntimeStateValue(CHAT_ROLLOVER_EPOCH_STATE_KEY, epoch);
     }
@@ -24158,6 +24158,15 @@
     // a21: route slugs are presentation. A slugged mounted route and slugless
     // project href belong to the same project only when their stable g-p ids match.
     return projectBasePathsShareIdentityV621(pathname, base);
+  }
+  function projectRolloverInScope(sessionInput = SemanticSessionStore.peek()) {
+    const session = sessionInput || null;
+    if (!session || session.status !== 'active' || !session.id) return false;
+
+    const projectBasePath = projectBasePathFromPathname(location.pathname);
+    if (!projectBasePath) return false;
+
+    return pathnameBelongsToProject(location.pathname, projectBasePath);
   }
 
   function findNamedProjectEntry(projectName) {
@@ -24567,7 +24576,7 @@
   async function prepareRolloverBootstrapAttachments(rolloverState, options = {}) {
     const policy = getChatRolloverPolicy();
     if (options.attachments === false || policy.bootstrapAttachments === false) {
-      if (biRolloverInScope()) throw new Error('ROLLOVER_RECOVERY_ATTACHMENTS_REQUIRED');
+      if (projectRolloverInScope()) throw new Error('ROLLOVER_RECOVERY_ATTACHMENTS_REQUIRED');
       return { attached: false, skipped: true, reason: 'bootstrap attachments disabled' };
     }
     if (!pathnameBelongsToProject(location.pathname, rolloverState.projectBasePath)) {
@@ -24991,7 +25000,7 @@
     chatRolloverPromise = (async () => {
       const session = SemanticSessionStore.load();
       if (!session) throw new Error('ROLLOVER_NO_SESSION: semantic session is unavailable');
-      if (!biRolloverInScope(session)) throw new Error('ROLLOVER_BI_SCOPE_REQUIRED');
+      if (!projectRolloverInScope(session)) throw new Error('ROLLOVER_PROJECT_SESSION_SCOPE_REQUIRED');
       const owner = await ensureOriginGlobalTransportAuthorityV697('rollover-preflight');
       if (!owner.allowed) return { handled: false, deferred: true, reason: 'source does not own transport' };
       if (isGeneratingFast() || isGenerating()) {
@@ -25280,7 +25289,7 @@
   async function maybeAutoChatRolloverAtSafePoint(turns, reconciliation = null) {
     const session = SemanticSessionStore.load();
     if (!session) return { handled: false };
-    if (!biRolloverInScope(session)) return { handled: false, reason: 'outside authorized BI session' };
+    if (!projectRolloverInScope(session)) return { handled: false, reason: 'outside authorized project semantic session' };
     const policy = getChatRolloverPolicy();
 
     const active = await getGlobalChatRolloverState();
