@@ -78,8 +78,13 @@ Read-only developer plane: health(), snapshot(), eventCount(), events().
 Disabled categories avoid payload construction; history is bounded; eventCount() reads that same bounded history; sink failure is isolated.
 
 CP-09 end-to-end non-gameplay canary:
-Engineering, deterministic, canonical real-browser, Git/GitHub and Jira factual-lineage proof is materialized at semantic/evidence/end-to-end-nongameplay-canary-v1.json and companion .md.
+ACCEPTED via semantic/evidence/end-to-end-nongameplay-canary-v1.json and companion .md.
 Implementation/GitHub commit: 570b958ca3cec6454af2ff01c31ed1efdab298e1.
 Jira factual lineage: CC-1 comment 10033, independently read back through authenticated Atlassian MCP.
-Exactly one CP-09 acceptance condition remains: fresh durable reload/recovery from repository artifacts without relying on the prior chat.
-Do not treat CP-09 as sealed until that recovery evidence is accepted and the canonical record is finalized.
+Recovery-basis commit: b51023e41a29e3b9e9b6c6e146c09adbd0824135, independently verified on origin/main before the fresh recovery run.
+Fresh no-chat durable recovery: VERIFIED with marker RRH_CP09_RECOVERED.
+Recovery route: semantic/ABOUT.md → semantic/ROUTES.md → semantic/current/STATE.md → canonical CP-09 JSON + Markdown evidence.
+Fresh target: 19C0D0380E1C2B99F1C888D1A854851F.
+Prior chat required: false.
+No CP-09 predicate remains open.
+The later acceptance-record publication commit is intentionally resolved from Git rather than self-embedded in this descriptive file.

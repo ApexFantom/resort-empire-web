@@ -1,16 +1,16 @@
 # End-to-End Non-Gameplay Canary v1 — CP-09
 
-Status: ENGINEERING + BROWSER + GIT/GITHUB/JIRA LINEAGE ACCEPTED; FRESH RECOVERY PENDING
+Status: ACCEPTED
 
-Claim under validation:
-A bounded non-gameplay change can travel through the established Resort operating path from semantic routing to an existing factual owner, governed mutation, deterministic and real-browser verification, durable evidence, Git/GitHub lineage, Jira factual Work evidence, and explicit semantic-delta handling without relying on prior chat history.
+Claim proven:
+A bounded non-gameplay change can travel through the established Resort operating path from semantic routing to an existing factual owner, governed mutation, deterministic and real-browser verification, durable evidence, Git/GitHub lineage, Jira factual Work evidence, explicit semantic-delta handling, and fresh durable recovery without relying on prior chat history.
 
 ## Route and ownership
 
 Bounded responsibility:
 extend the existing read-only developer observability surface with an exact bounded event count.
 
-Durable route:
+Durable implementation route:
 semantic/ROUTES.md
 → semantic/contracts/DEBUG.md
 → src/debug/DebugTransport.ts + src/dev/installDevFacade.ts
@@ -98,16 +98,26 @@ Implementation/evidence commit:
 570b958ca3cec6454af2ff01c31ed1efdab298e1
 
 Verified facts:
-- local main HEAD = 570b958ca3cec6454af2ff01c31ed1efdab298e1
-- independent `git ls-remote --heads origin main` = 570b958ca3cec6454af2ff01c31ed1efdab298e1
-- main tracks origin/main at +0/-0 after publication
+- implementation was committed at 570b958ca3cec6454af2ff01c31ed1efdab298e1
+- independent `git ls-remote --heads origin main` matched that implementation publication at acceptance time
+- Jira factual lineage references this exact implementation commit
+
+Recovery-basis publication commit:
+b51023e41a29e3b9e9b6c6e146c09adbd0824135
+
+Verified facts:
+- local main HEAD = b51023e41a29e3b9e9b6c6e146c09adbd0824135 before the fresh recovery run
+- independent `git ls-remote --heads origin main` = b51023e41a29e3b9e9b6c6e146c09adbd0824135
+- main tracked origin/main at +0/-0
+
+The implementation commit and recovery-basis commit are intentionally distinct lineage facts.
 
 ## Accepted Jira factual Work lineage
 
 Existing Jira Work:
 CC-1
 
-New CP-09 factual lineage comment:
+CP-09 factual lineage comment:
 10033
 
 Independent `executeRead(name=listJiraIssueComments)` readback returned comment 10033 containing:
@@ -117,12 +127,49 @@ Independent `executeRead(name=listJiraIssueComments)` readback returned comment 
 
 Jira remains factual Work/lineage evidence only and is not runtime-behavior or product-meaning authority.
 
-## Remaining CP-09 debt
+## Accepted fresh durable recovery
 
-Exactly one predicate remains before final ACCEPTED CP-09 proof:
-- prove fresh durable reload/recovery from repository artifacts without relying on this chat.
+Fresh model target:
+19C0D0380E1C2B99F1C888D1A854851F
 
-Git, GitHub, Jira, deterministic, browser, lifecycle, ownership, and semantic-delta evidence are no longer pending.
+Fresh chat:
+https://claude.ai/chat/1e576358-d928-49d6-b6a3-95d9bd0c427d
+
+Recovery marker:
+RRH_CP09_RECOVERED
+
+The fresh model was given no prior conversation and initially received only semantic/ABOUT.md.
+It independently requested and followed this durable route:
+
+semantic/ABOUT.md
+→ semantic/ROUTES.md
+→ semantic/current/STATE.md
+→ semantic/evidence/end-to-end-nongameplay-canary-v1.json
++ semantic/evidence/end-to-end-nongameplay-canary-v1.md
+
+From those repository artifacts it reconstructed:
+- current CP-09 recovery-pending record before this acceptance update
+- factual owners src/debug/DebugTransport.ts and src/dev/installDevFacade.ts
+- test owner src/debug/DebugTransport.test.ts
+- semantic contract semantic/contracts/DEBUG.md
+- exact implementation/GitHub commit 570b958ca3cec6454af2ff01c31ed1efdab298e1
+- Jira lineage CC-1 comment 10033 and readback marker RRH_CP09_JIRA_LINEAGE_OK
+- the eventCount() semantic delta and its no-new-writable-authority constraint
+- fresh durable no-chat recovery as the single previously outstanding predicate
+
+Its final synthesis explicitly returned:
+- RECOVERY_MARKER: RRH_CP09_RECOVERED
+- PRIOR_CHAT_REQUIRED: false
+- recovery assessment: successful reconstruction from supplied durable repository artifacts without prior conversation
+
+Therefore the previously pending recovery predicate is satisfied.
+
+## Final CP-09 decision
+
+ACCEPTED.
+
+No CP-09 predicate remains open.
+The acceptance-record publication commit is intentionally not self-embedded in this file; Git is the authority for that subsequent publication lineage.
 
 Canonical machine-readable record:
 semantic/evidence/end-to-end-nongameplay-canary-v1.json

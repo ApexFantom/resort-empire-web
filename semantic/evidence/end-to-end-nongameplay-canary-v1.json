@@ -1,13 +1,14 @@
 {
   "schema": "resort-verification-result/v1",
   "verification_id": "resort-end-to-end-nongameplay-canary-v1",
-  "verdict": "RECOVERY_PENDING",
+  "verdict": "ACCEPTED",
   "subject": {
     "distance_id": "distance:resort-bootstrap-end-to-end-nongameplay-canary-v1",
     "mission_predicate": "CP-09",
     "base_commit": "3c366a0a60b8e1c001bb3ff5778d563ab0e18dcb",
     "implementation_commit": "570b958ca3cec6454af2ff01c31ed1efdab298e1",
     "github_remote_verified_commit": "570b958ca3cec6454af2ff01c31ed1efdab298e1",
+    "recovery_basis_commit": "b51023e41a29e3b9e9b6c6e146c09adbd0824135",
     "jira_reference": "CC-1 comment 10033"
   },
   "route": {
@@ -108,6 +109,8 @@
     "jira": "VERIFIED",
     "git_commit": "570b958ca3cec6454af2ff01c31ed1efdab298e1",
     "github_remote_commit": "570b958ca3cec6454af2ff01c31ed1efdab298e1",
+    "recovery_basis_commit": "b51023e41a29e3b9e9b6c6e146c09adbd0824135",
+    "recovery_basis_remote_verified": true,
     "jira_issue": "CC-1",
     "jira_comment_id": "10033",
     "jira_readback_marker": "RRH_CP09_JIRA_LINEAGE_OK"
@@ -116,7 +119,19 @@
     "durable_evidence": "semantic/evidence/end-to-end-nongameplay-canary-v1.json",
     "companion_record": "semantic/evidence/end-to-end-nongameplay-canary-v1.md",
     "current_state_route": "semantic/current/STATE.md",
+    "status": "VERIFIED",
+    "marker": "RRH_CP09_RECOVERED",
     "prior_chat_required": false,
-    "status": "PENDING_FRESH_RECOVERY"
+    "fresh_target_id": "19C0D0380E1C2B99F1C888D1A854851F",
+    "fresh_chat_url": "https://claude.ai/chat/1e576358-d928-49d6-b6a3-95d9bd0c427d",
+    "recovery_basis_commit": "b51023e41a29e3b9e9b6c6e146c09adbd0824135",
+    "route_trace": [
+      "semantic/ABOUT.md",
+      "semantic/ROUTES.md",
+      "semantic/current/STATE.md",
+      "semantic/evidence/end-to-end-nongameplay-canary-v1.json",
+      "semantic/evidence/end-to-end-nongameplay-canary-v1.md"
+    ],
+    "assessment": "A fresh model with no prior conversation independently routed from ABOUT through ROUTES and STATE to the canonical CP-09 evidence, then reconstructed the exact owners, implementation/GitHub commit, Jira lineage, semantic delta, and previously pending recovery condition."
   }
 }
