@@ -1,0 +1,58 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification_id": "resort-observability-v1",
+  "verdict": "ACCEPTED",
+  "subject": {
+    "distance_id": "distance:resort-bootstrap-observability-v1",
+    "implementation_commit": "81308d32ad8e115e5ede0bce1fafd3cad151388f"
+  },
+  "deterministic": {
+    "vitest": "PASS",
+    "test_files": 2,
+    "tests": 5,
+    "production_build": "PASS",
+    "disabled_category_payload_factory_not_called": true,
+    "bounded_history": true,
+    "sink_failure_isolated": true,
+    "canonical_core_transition_integration": true
+  },
+  "browser": {
+    "adapter": "chrome-devtools-mcp@1.10.1",
+    "target_url": "http://127.0.0.1:4173/",
+    "page_id": 2,
+    "facade_keys": [
+      "events",
+      "health",
+      "snapshot"
+    ],
+    "facade_frozen": true,
+    "global_facade_writable": false,
+    "event_count": 18,
+    "last_event": {
+      "sequence": 18,
+      "category": "core.transition",
+      "payload": {
+        "commandType": "ADVANCE_SIMULATION",
+        "simulationTick": 18,
+        "elapsedSimulationMs": 3600
+      }
+    },
+    "console_error_count": 0,
+    "network_failure_count": 0
+  },
+  "architecture": {
+    "canonical_state_owner": "src/core/runtime.ts",
+    "observability_transport_owner": "src/debug/DebugTransport.ts",
+    "dev_projection_owner": "src/dev/installDevFacade.ts",
+    "composition_owner": "src/main.tsx",
+    "writable_debug_state_added": false,
+    "second_debug_plane_added": false,
+    "gameplay_authority_added": false,
+    "production_enabled_categories": []
+  },
+  "screenshot": {
+    "path": "semantic/evidence/assets/observability-v1.webp",
+    "sha256": "e5d8e5450cd3182045d435f82c60e0c1ff6a0ad9bc6423425176372be0f9ffbb",
+    "bytes": 7688
+  }
+}

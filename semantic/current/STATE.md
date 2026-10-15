@@ -66,5 +66,8 @@ Dynamic Mission/Distance state is intentionally resolved from VibeGo.resortMissi
 Browser control:
 Real Chrome MCP browser acceptance: ACCEPTED via semantic/evidence/browser-control-v1.json; implementation commit 842da26f5c75e56ab6fb16089a54a054a2fbb35c.
 
-Observability implementation:
-MATERIALIZED; acceptance pending deterministic and governed real-browser verification.
+Observability:
+ACCEPTED via semantic/evidence/observability-v1.json.
+Typed lazy owner: src/debug/DebugTransport.ts.
+Read-only developer plane: health(), snapshot(), events().
+Disabled categories avoid payload construction; history is bounded; sink failure is isolated.

@@ -17,3 +17,4 @@ Evidence may include:
 A generated file, successful commit, Jira status, or isolated test alone is not sufficient completion proof.
 
 Keep evidence bounded and claim-specific. Do not turn this directory into a raw-log dump or a second source tree.
+- Governed observability v1: `observability-v1.json` + `observability-v1.md` + `assets/observability-v1.webp`
