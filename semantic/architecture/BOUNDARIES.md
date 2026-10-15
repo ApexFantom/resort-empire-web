@@ -59,3 +59,16 @@ Ownership constraints:
 - Debug sink failures cannot block or replace canonical core transitions.
 - This is a bootstrap architecture proof, not gameplay implementation.
 - These paths are implementation truth only while factual source inspection continues to confirm them; if ownership moves, update this route rather than creating a compatibility shadow layer.
+
+## Render evolution contract
+
+Current Prototype projection:
+- PixiJS owns the replaceable 2.5D / isometric world projection.
+- 2.5D rendering may derive screen position, layering, depth illusion, animation and visual effects from canonical logical world state.
+- Pixi-specific objects and screen-space representation must not become canonical gameplay state.
+
+Long-term visual target:
+- true 3D Resort Empire.
+- the eventual 3D renderer replaces or supersedes the Pixi projection boundary rather than the pure TypeScript gameplay authority.
+- game/economy/simulation/domain state must remain usable independently of either rendering implementation.
+- no permanent 3D engine choice is authorized yet.
