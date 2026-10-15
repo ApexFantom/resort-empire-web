@@ -7,7 +7,7 @@
 | Application architecture | architecture/BOUNDARIES.md | repository source owners once scaffolded |
 | Product meaning / scope | domain/PRODUCT.md | RESORT_EMPIRE_REQUIREMENTS_FINAL(2).md |
 | Browser verification / testing | contracts/BROWSER_TESTING.md | test source + Chrome DevTools MCP runtime evidence once installed |
-| Debug / developer observability | contracts/DEBUG.md | debug transport / __RRH_DEV__ source owners once implemented |
+| Debug / developer observability | contracts/DEBUG.md | src/debug/DebugTransport.ts; src/core/runtime.ts; src/dev/installDevFacade.ts; src/main.tsx |
 | Git / GitHub / Jira | contracts/GIT_GITHUB_JIRA.md | .git, future GitHub remote, future dedicated Jira project |
 | Accepted verification evidence | evidence/README.md | factual test/runtime/browser evidence |
 | Reusable process lessons | lessons/README.md | accepted incident evidence and repaired source |

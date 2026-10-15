@@ -17,5 +17,21 @@ Rules:
 - any developer mutation must delegate to canonical game-core commands
 - debug/test/browser tooling must not create parallel writable gameplay state
 
-Current source owner:
-NOT YET MATERIALIZED. Bind this contract to exact source paths when observability is implemented.
+Current source owners:
+- typed lazy transport + bounded ring-buffer sink: src/debug/DebugTransport.ts
+- canonical transition observation hook: src/core/runtime.ts
+- read-only browser/developer projection: src/dev/installDevFacade.ts
+- composition and category enablement: src/main.tsx
+- transport behavior canaries: src/debug/DebugTransport.test.ts
+- canonical core integration test: src/core/runtime.test.ts
+
+Materialized constraints:
+- BootstrapCore remains the only writable bootstrap-state authority.
+- DebugTransport observes already-authorized transitions; it does not mutate core state.
+- disabled categories return before invoking their payload factory.
+- sink failures are isolated from canonical runtime execution.
+- ring-buffer history is bounded by composition-owned capacity.
+- the development build currently enables only core.transition.
+- the production build supplies no enabled debug categories.
+- globalThis.__RRH_DEV__ exposes health(), snapshot(), and events() as read-only inspection surfaces.
+

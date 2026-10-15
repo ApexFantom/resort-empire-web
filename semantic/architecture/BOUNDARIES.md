@@ -41,6 +41,10 @@ The minimal non-gameplay shell now has factual implementation owners.
   - src/main.tsx
 - current read-only developer inspection facade:
   - src/dev/installDevFacade.ts
+- shared lazy developer-observability transport + bounded ring buffer:
+  - src/debug/DebugTransport.ts
+- deterministic observability transport contract test:
+  - src/debug/DebugTransport.test.ts
 
 Ownership constraints:
 
@@ -49,6 +53,9 @@ Ownership constraints:
 - Pixi reads snapshots on its render ticker; it does not own or mutate canonical state.
 - Simulation cadence is driven independently by SimulationClock and is not coupled to the Pixi render ticker.
 - Persistence is reached through the explicit BootstrapPersistence port; Dexie is an adapter behind that contract.
-- globalThis.__RRH_DEV__ currently exposes read-only health() and snapshot() only.
+- globalThis.__RRH_DEV__ exposes read-only health(), snapshot(), and bounded events() inspection only.
+- DebugTransport is observational only; BootstrapCore remains the sole writable bootstrap-state authority.
+- Disabled debug categories do not invoke their payload factories; production currently enables no debug categories.
+- Debug sink failures cannot block or replace canonical core transitions.
 - This is a bootstrap architecture proof, not gameplay implementation.
 - These paths are implementation truth only while factual source inspection continues to confirm them; if ownership moves, update this route rather than creating a compatibility shadow layer.
