@@ -1,0 +1,39 @@
+{
+  "schema": "resort-browser-control-config/v1",
+  "adapter": "official Chrome DevTools MCP",
+  "package": {
+    "name": "chrome-devtools-mcp",
+    "version": "1.10.1",
+    "exactSpec": "chrome-devtools-mcp@1.10.1",
+    "cli": "chrome-devtools",
+    "server": "chrome-devtools-mcp"
+  },
+  "execution": {
+    "workspace": "D:\\TempleNet\\WorkSpace\\RRH",
+    "browserChannel": "stable",
+    "userDataDir": "D:\\TempleNet\\WorkSpace\\RRH\\.vibe\\browser\\profile",
+    "headless": true,
+    "pageIdRouting": true,
+    "usageStatistics": false,
+    "performanceCrux": false
+  },
+  "targetPolicy": {
+    "allowedDevelopmentOrigins": [
+      "http://127.0.0.1:*",
+      "http://localhost:*"
+    ],
+    "resolution": "Parse structured list_pages/new_page JSON and select the exact URL; never infer pageId by regex or selected position."
+  },
+  "evaluateScriptCliContract": {
+    "requiredPositional": [
+      "function"
+    ],
+    "pageSelector": "--pageId <number>"
+  },
+  "devInspection": {
+    "surface": "globalThis.__RRH_DEV__",
+    "defaultAccess": "read-only",
+    "authoritativeMutation": "must cross canonical game-core command authority"
+  },
+  "overlappingBrowserStack": "forbidden unless factual accepted gap"
+}
