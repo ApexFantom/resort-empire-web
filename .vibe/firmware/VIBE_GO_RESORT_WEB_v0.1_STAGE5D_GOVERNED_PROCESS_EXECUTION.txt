@@ -18107,7 +18107,7 @@
       '',
       projectDataContextV670,
       '',
-      workbenchContextM05P3,
+      resortHostContextV1,
       ...operatorPrerequisiteDispatchLinesV6912(session),
       ...normalLedgerLinesV630,
       ...(session.route.returnPoint && ['INVESTIGATION', 'CHANGE', 'VALIDATION', 'ARCHITECTURE'].includes(dispatchPlanV642.intent) ? ['', 'RETURN POINT', JSON.stringify(session.route.returnPoint)] : []),
@@ -18138,7 +18138,7 @@
       sourceContext,
       intelligenceContext,
       projectDataContextV670,
-      workbenchContextM05P3,
+      resortHostContextV1,
       crossChatHandoffContext,
     ].join('\n');
     const ledgerContinuationText = [
