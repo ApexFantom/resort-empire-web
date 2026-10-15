@@ -74,5 +74,9 @@ Real Chrome MCP browser acceptance: ACCEPTED via semantic/evidence/browser-contr
 Observability:
 ACCEPTED via semantic/evidence/observability-v1.json.
 Typed lazy owner: src/debug/DebugTransport.ts.
-Read-only developer plane: health(), snapshot(), events().
-Disabled categories avoid payload construction; history is bounded; sink failure is isolated.
+Read-only developer plane: health(), snapshot(), eventCount(), events().
+Disabled categories avoid payload construction; history is bounded; eventCount() reads that same bounded history; sink failure is isolated.
+
+CP-09 end-to-end non-gameplay canary:
+Engineering + deterministic + canonical real-browser proof is materialized at semantic/evidence/end-to-end-nongameplay-canary-v1.json and companion .md.
+Git/GitHub/Jira lineage and final reload/recovery acceptance remain pending; do not treat CP-09 as sealed until that evidence record is finalized.

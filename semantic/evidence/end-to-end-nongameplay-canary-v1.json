@@ -1,0 +1,117 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification_id": "resort-end-to-end-nongameplay-canary-v1",
+  "verdict": "LINEAGE_PENDING",
+  "subject": {
+    "distance_id": "distance:resort-bootstrap-end-to-end-nongameplay-canary-v1",
+    "mission_predicate": "CP-09",
+    "base_commit": "3c366a0a60b8e1c001bb3ff5778d563ab0e18dcb",
+    "implementation_commit": null,
+    "github_remote_verified_commit": null,
+    "jira_reference": null
+  },
+  "route": {
+    "bounded_responsibility": "extend existing read-only developer observability with an exact bounded event count",
+    "semantic_entry": "semantic/ROUTES.md",
+    "semantic_contract": "semantic/contracts/DEBUG.md",
+    "factual_owners": [
+      "src/debug/DebugTransport.ts",
+      "src/dev/installDevFacade.ts"
+    ],
+    "test_owner": "src/debug/DebugTransport.test.ts",
+    "new_owner_created": false
+  },
+  "mutation": {
+    "governed": true,
+    "gameplay_mutated": false,
+    "shadow_owner_created": false,
+    "files": [
+      {
+        "path": "src/debug/DebugTransport.ts",
+        "result_sha256": "246e0b56383513480b14094c949e7d8a743086331d466e38b4017055f110f547",
+        "change": "DebugRingBufferSink.size()"
+      },
+      {
+        "path": "src/debug/DebugTransport.test.ts",
+        "result_sha256": "5504834632782758d86cd4c1501a04ac5292bb02134c1fdc6a8690cb11689bb6",
+        "change": "deterministic bounded-size assertions"
+      },
+      {
+        "path": "src/dev/installDevFacade.ts",
+        "result_sha256": "67f3d62349f1fa83aca72f61361988bc4733d82884458b2ed10a638591524341",
+        "change": "read-only eventCount() facade projection"
+      }
+    ]
+  },
+  "deterministic": {
+    "vitest": "PASS",
+    "test_files": 2,
+    "tests": 5,
+    "request_id": "rrh:cp09:test-observability-event-count:v1",
+    "production_build": "PASS",
+    "build_request_id": "rrh:cp09:build-observability-event-count:v1"
+  },
+  "browser": {
+    "adapter": "chrome-devtools-mcp@1.10.1",
+    "target_url": "http://127.0.0.1:4173/",
+    "page_id": 2,
+    "page_resolution": "structured exact-URL JSON",
+    "observation_request_id": "rrh:cp09:browser-observe-event-count:v1",
+    "marker": "RRH_CP09_BROWSER_OK",
+    "facade_keys": [
+      "eventCount",
+      "events",
+      "health",
+      "snapshot"
+    ],
+    "facade_frozen": true,
+    "global_facade_writable": false,
+    "event_count_type": "function",
+    "event_count": 64,
+    "events_length": 64,
+    "count_matches_events_length": true,
+    "count_within_capacity": true,
+    "capacity": 64,
+    "health": {
+      "schema": "rrh-dev-health/v1",
+      "ok": true,
+      "simulationRunning": true,
+      "simulationPeriodMs": 200
+    },
+    "latest_event": {
+      "sequence": 453,
+      "category": "core.transition",
+      "commandType": "ADVANCE_SIMULATION",
+      "simulationTick": 453,
+      "elapsedSimulationMs": 90600
+    },
+    "console_error_count": 0,
+    "network_request_count": 35,
+    "network_failure_count": 0
+  },
+  "lifecycle": {
+    "chrome_mcp_stop_request_id": "rrh:cp09:stop-chrome-mcp:v1",
+    "chrome_mcp_stop_exit_code": 0,
+    "vite_job_id": "job-2044a31f7a42182b58e37ea2",
+    "vite_stop_request_id": "rrh:cp09:stop-vite-browser-canary:v1",
+    "vite_state": "STOPPED",
+    "vite_termination_confirmed": true
+  },
+  "semantic_delta": {
+    "required": true,
+    "reason": "The durable read-only developer facade contract gains eventCount(), backed by the existing bounded ring buffer without new writable authority.",
+    "contract": "semantic/contracts/DEBUG.md"
+  },
+  "lineage": {
+    "git": "PENDING",
+    "github": "PENDING",
+    "jira": "PENDING"
+  },
+  "recovery": {
+    "durable_evidence": "semantic/evidence/end-to-end-nongameplay-canary-v1.json",
+    "companion_record": "semantic/evidence/end-to-end-nongameplay-canary-v1.md",
+    "current_state_route": "semantic/current/STATE.md",
+    "prior_chat_required": false,
+    "status": "PENDING_LINEAGE_FINALIZATION"
+  }
+}
