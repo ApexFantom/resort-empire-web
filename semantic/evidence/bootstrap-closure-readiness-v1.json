@@ -1,0 +1,57 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification": "resort-bootstrap-closure-readiness-v1",
+  "verdict": "ACCEPTED",
+  "mission_id": "resort-empire-web-bootstrap-substrate-v2.2",
+  "mission_revision": "2026-10-14-environment-rebind-v2.2",
+  "recorded_from_semantic_session": "resort-empire-web-bootstrap-v2",
+  "recorded_after_semantic_revision": 14,
+  "scope": "Final factual closure-readiness evidence for CP-03 and CP-10 only; no other Bootstrap predicate is reopened.",
+  "cp03": {
+    "status": "PROVEN",
+    "claim": "Bound project/environment identity fails closed before mutation when an authenticated host request carries a wrong environment identity.",
+    "authority": [
+      ".vibe/environment.json",
+      ".vibe/host-bridge/server.ps1",
+      "semantic/contracts/LOCAL_EXECUTION.md"
+    ],
+    "canary": {
+      "job_id": "job-2aa81fd2ae20a74257bd6b01",
+      "marker": "RRH_CP03_AUTHENTICATED_NEGATIVE_CONTEXT_RESULT",
+      "job_state": "EXITED",
+      "exit_code": 0,
+      "http_status": 400,
+      "authenticated": true,
+      "auth_rejected": false,
+      "intentionally_wrong_identity_dimension": "environment_id",
+      "observed_error": "REQUEST_CONTEXT_MISMATCH: environment_id",
+      "requested_operation": "fs.writeExact",
+      "sentinel_path": "semantic/evidence/__cp03_negative_canary_should_not_exist__.txt",
+      "sentinel_absent_before": true,
+      "sentinel_absent_after": true,
+      "git_head_before": "f74cdcaa1f27693d8f540d1cf570e8daebabe279",
+      "git_head_after": "f74cdcaa1f27693d8f540d1cf570e8daebabe279",
+      "git_ahead_after": 0,
+      "git_behind_after": 0,
+      "git_clean_after": true,
+      "side_effect": false
+    }
+  },
+  "cp10": {
+    "status": "PROVEN",
+    "claim": "No Bootstrap substrate blocker remains after CP-03 closure; successor readiness is established.",
+    "review_basis": "The bounded Bootstrap closure-readiness review evaluated CP-01 through CP-12 against accepted durable evidence and found CP-03 negative mismatch behavior to be the sole remaining blocker. The authenticated CP-03 canary above closed that gap without side effect.",
+    "blocker_inventory": [],
+    "successor_ready": true,
+    "successor_authority": "After closure, authorize exactly one successor Mission: the smallest Prototype gameplay vertical proof for one normal wave.",
+    "gameplay_started": false
+  },
+  "assertions": {
+    "wrong_identity_failed_closed": true,
+    "mutation_not_executed": true,
+    "repository_side_effect_absent": true,
+    "blocker_inventory_empty": true,
+    "successor_readiness": true,
+    "gameplay_before_bootstrap_seal_absent": true
+  }
+}

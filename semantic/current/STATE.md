@@ -3,7 +3,7 @@
 Observed bootstrap state after the new-PC rebind and host-boundary acceptance.
 
 - Project: resort-empire-web
-- Bootstrap Mission: v2.2, active
+- Bootstrap Mission: v2.2, closure evidence PROVEN; live semantic seal state resolves from VibeGo.resortMission.status()
 - Semantic session: resort-empire-web-bootstrap-v2
 - Active Distance: RESOLVE_FROM:VibeGo.resortMission.status()
 - Physical environment authority: .vibe/environment.json
@@ -88,3 +88,19 @@ Fresh target: 19C0D0380E1C2B99F1C888D1A854851F.
 Prior chat required: false.
 No CP-09 predicate remains open.
 The later acceptance-record publication commit is intentionally resolved from Git rather than self-embedded in this descriptive file.
+
+## Bootstrap closure publication
+
+Closure evidence is materialized and structurally validated.
+
+- CP-01 through CP-12: PROVEN
+- Closure evidence: semantic/evidence/bootstrap-mission-closure-v1.json
+- Final CP-03 / CP-10 readiness evidence: semantic/evidence/bootstrap-closure-readiness-v1.json
+- Mission invariant preserved: true
+- Forbidden states absent: true
+- Bootstrap blocker inventory: empty
+- Gameplay implementation during Bootstrap: absent
+- Semantic Mission authority: live seal state resolves from VibeGo.resortMission.status(); this repository record proves closure predicates but does not own semantic seal state
+- Authorized successor after MISSION_SEALED: the smallest Prototype gameplay vertical proof for one normal wave
+
+Gameplay admission is governed by the live semantic MISSION_SEALED state, not this descriptive repository file.
