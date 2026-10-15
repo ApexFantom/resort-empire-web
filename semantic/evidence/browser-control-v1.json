@@ -1,0 +1,95 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification_id": "resort-browser-control-v1",
+  "verdict": "ACCEPTED",
+  "subject": {
+    "distance_id": "distance:resort-bootstrap-governed-browser-control-v1",
+    "implementation_commit": "842da26f5c75e56ab6fb16089a54a054a2fbb35c"
+  },
+  "engines": {
+    "deterministic": "Vitest",
+    "real_browser": "chrome-devtools-mcp@1.10.1"
+  },
+  "browser": {
+    "adapter": "official Chrome DevTools MCP",
+    "client": "chrome-devtools",
+    "channel": "stable",
+    "profile": ".vibe/browser/profile/",
+    "profile_kind": "dedicated non-personal persistent test profile",
+    "target_url": "http://127.0.0.1:4173/",
+    "page_id": 2,
+    "page_resolution": "structured exact-URL JSON"
+  },
+  "assertions": {
+    "vite_http_ready": true,
+    "react_projection_visible": true,
+    "pixi_canvas_count": 1,
+    "dev_facade_keys": [
+      "health",
+      "snapshot"
+    ],
+    "dev_facade_read_only_surface": true,
+    "simulation_running": true,
+    "controlled_reload_survived": true,
+    "console_error_count": 0,
+    "network_failure_count": 0,
+    "screenshot_captured": true,
+    "performance_trace_captured": true,
+    "mcp_clean_stop": true,
+    "vite_clean_stop": true,
+    "playwright_added": false,
+    "overlapping_browser_stack_added": false
+  },
+  "observations": {
+    "runtime": {
+      "marker": "RRH_BROWSER_OK",
+      "href": "http://127.0.0.1:4173/",
+      "heading": "Bootstrap shell",
+      "canvasCount": 1,
+      "devKeys": [
+        "health",
+        "snapshot"
+      ],
+      "health": {
+        "schema": "rrh-dev-health/v1",
+        "ok": true,
+        "simulationRunning": true,
+        "simulationPeriodMs": 200
+      },
+      "snapshot": {
+        "schema": "resort-bootstrap-state/v1",
+        "bootId": "635afdb4-4f23-4853-a90f-8ec25976a516",
+        "simulationTick": 42,
+        "elapsedSimulationMs": 8400
+      }
+    },
+    "after_reload": {
+      "marker": "RRH_RELOAD_OK",
+      "href": "http://127.0.0.1:4173/",
+      "heading": "Bootstrap shell",
+      "canvasCount": 1,
+      "health": {
+        "schema": "rrh-dev-health/v1",
+        "ok": true,
+        "simulationRunning": true,
+        "simulationPeriodMs": 200
+      }
+    },
+    "screenshot": {
+      "path": "semantic/evidence/assets/browser-control-v1.webp",
+      "sha256": "4d5258befec97dca0eea90e168feeff42a8bd00cc02823f224a427ada4fe088f",
+      "bytes": 7718
+    },
+    "performance_trace": {
+      "sha256": "593dbf006a798bdc067b57c8fcefacc554ea513a9ed64c9588998682ad5566ac",
+      "bytes": 3794466,
+      "committed": false
+    },
+    "network_request_count": 68
+  },
+  "verification_policy": {
+    "manual_console_probes": "RECON_ONLY",
+    "browser_acceptance": "Chrome DevTools MCP",
+    "deterministic_tests": "Vitest"
+  }
+}

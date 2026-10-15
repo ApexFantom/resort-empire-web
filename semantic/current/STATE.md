@@ -63,3 +63,7 @@ Gameplay implementation:
 FORBIDDEN until the Bootstrap Mission is sealed.
 
 Dynamic Mission/Distance state is intentionally resolved from VibeGo.resortMission.status() rather than duplicated here.
+
+
+Browser control:
+Real Chrome MCP browser acceptance: ACCEPTED via semantic/evidence/browser-control-v1.json; implementation commit 842da26f5c75e56ab6fb16089a54a054a2fbb35c.
