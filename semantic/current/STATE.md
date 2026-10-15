@@ -78,5 +78,8 @@ Read-only developer plane: health(), snapshot(), eventCount(), events().
 Disabled categories avoid payload construction; history is bounded; eventCount() reads that same bounded history; sink failure is isolated.
 
 CP-09 end-to-end non-gameplay canary:
-Engineering + deterministic + canonical real-browser proof is materialized at semantic/evidence/end-to-end-nongameplay-canary-v1.json and companion .md.
-Git/GitHub/Jira lineage and final reload/recovery acceptance remain pending; do not treat CP-09 as sealed until that evidence record is finalized.
+Engineering, deterministic, canonical real-browser, Git/GitHub and Jira factual-lineage proof is materialized at semantic/evidence/end-to-end-nongameplay-canary-v1.json and companion .md.
+Implementation/GitHub commit: 570b958ca3cec6454af2ff01c31ed1efdab298e1.
+Jira factual lineage: CC-1 comment 10033, independently read back through authenticated Atlassian MCP.
+Exactly one CP-09 acceptance condition remains: fresh durable reload/recovery from repository artifacts without relying on the prior chat.
+Do not treat CP-09 as sealed until that recovery evidence is accepted and the canonical record is finalized.

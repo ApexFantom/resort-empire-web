@@ -1,6 +1,6 @@
 # End-to-End Non-Gameplay Canary v1 — CP-09
 
-Status: ENGINEERING + BROWSER PROOF ACCEPTED; GIT/GITHUB/JIRA LINEAGE PENDING
+Status: ENGINEERING + BROWSER + GIT/GITHUB/JIRA LINEAGE ACCEPTED; FRESH RECOVERY PENDING
 
 Claim under validation:
 A bounded non-gameplay change can travel through the established Resort operating path from semantic routing to an existing factual owner, governed mutation, deterministic and real-browser verification, durable evidence, Git/GitHub lineage, Jira factual Work evidence, and explicit semantic-delta handling without relying on prior chat history.
@@ -80,7 +80,7 @@ Accepted observation:
 
 Chrome DevTools MCP stopped with exit code 0.
 Governed Vite job job-2044a31f7a42182b58e37ea2 reached STOPPED with termination_confirmed=true.
-The Vite stop path produced expected forced-termination EPIPE/file-watcher diagnostics after acceptance; these occurred during controlled shutdown and did not invalidate the already-completed browser observations.
+The Vite stop path produced forced-termination EPIPE/file-watcher diagnostics after acceptance; these occurred during controlled shutdown and did not invalidate the completed browser observations.
 
 ## Semantic delta decision
 
@@ -92,14 +92,37 @@ the durable read-only developer facade contract changes from health()/snapshot()
 Contract owner updated:
 semantic/contracts/DEBUG.md
 
-## Remaining CP-09 lineage debt
+## Accepted Git / GitHub lineage
 
-Before this evidence can become final ACCEPTED CP-09 proof:
-1. commit this bounded implementation + semantic evidence on main;
-2. push and independently verify origin/main at the exact commit;
-3. record factual commit/evidence lineage in the existing Jira Resort project without inventing product truth;
-4. finalize the machine-readable evidence with exact Git/GitHub/Jira references;
-5. prove durable reload/recovery from repository artifacts without this chat.
+Implementation/evidence commit:
+570b958ca3cec6454af2ff01c31ed1efdab298e1
+
+Verified facts:
+- local main HEAD = 570b958ca3cec6454af2ff01c31ed1efdab298e1
+- independent `git ls-remote --heads origin main` = 570b958ca3cec6454af2ff01c31ed1efdab298e1
+- main tracks origin/main at +0/-0 after publication
+
+## Accepted Jira factual Work lineage
+
+Existing Jira Work:
+CC-1
+
+New CP-09 factual lineage comment:
+10033
+
+Independent `executeRead(name=listJiraIssueComments)` readback returned comment 10033 containing:
+- exact implementation commit 570b958ca3cec6454af2ff01c31ed1efdab298e1
+- semantic/evidence/end-to-end-nongameplay-canary-v1.json
+- semantic/evidence/end-to-end-nongameplay-canary-v1.md
+
+Jira remains factual Work/lineage evidence only and is not runtime-behavior or product-meaning authority.
+
+## Remaining CP-09 debt
+
+Exactly one predicate remains before final ACCEPTED CP-09 proof:
+- prove fresh durable reload/recovery from repository artifacts without relying on this chat.
+
+Git, GitHub, Jira, deterministic, browser, lifecycle, ownership, and semantic-delta evidence are no longer pending.
 
 Canonical machine-readable record:
 semantic/evidence/end-to-end-nongameplay-canary-v1.json
