@@ -1,0 +1,85 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification_id": "canonical-normal-wave-domain-browser-acceptance-v1",
+  "verdict": "ACCEPTED",
+  "subject": {
+    "mission_id": "resort-empire-web-full-game-v1",
+    "distance_id": "distance:resort-canonical-normal-wave-domain-foundation-v1",
+    "working_tree_base_commit": "ffc9d10e371cf616c334b49022e7adff155074b1"
+  },
+  "engines": {
+    "deterministic": "Vitest",
+    "real_browser": "chrome-devtools-mcp@1.10.1"
+  },
+  "browser": {
+    "target_url": "http://127.0.0.1:5173/",
+    "decisive_page_id": 2,
+    "page_resolution": "structured exact-URL JSON"
+  },
+  "assertions": {
+    "legacy_normal_wave_persistence_migrates": true,
+    "pre_wave_worker_reassignment_visible": true,
+    "worker_assignment_changes_capacity": true,
+    "waiting_distinct_from_active_service": true,
+    "accumulated_wait_history_drives_result": true,
+    "staffing_vs_capacity_cause_owned_by_core": true,
+    "causal_result_guidance_visible": true,
+    "complete_to_next_awaiting_visible": true,
+    "worker_assignment_persists_across_wave_boundary": true,
+    "pixi_canvas_count": 1,
+    "console_error_count": 0,
+    "overlapping_browser_stack_added": false
+  },
+  "observations": {
+    "pre_wave": {
+      "phase": "awaiting",
+      "worker_assignment": "food",
+      "reception_capacity": 1,
+      "food_capacity": 2
+    },
+    "incoming": {
+      "phase": "incoming",
+      "released_demand": 4,
+      "total_demand": 6,
+      "waiting_total": 2,
+      "active_total": 3,
+      "reception": {
+        "waiting": 2,
+        "active": 1,
+        "capacity": 1
+      },
+      "food": {
+        "waiting": 0,
+        "active": 2,
+        "capacity": 2
+      }
+    },
+    "complete": {
+      "phase": "complete",
+      "released_demand": 6,
+      "waiting_total": 0,
+      "active_total": 0,
+      "worker_assignment": "food",
+      "rating": 3,
+      "bottleneck": "reception",
+      "cause": "staffing",
+      "accumulated_wait_reception": 9,
+      "accumulated_wait_total": 9,
+      "guidance": "Reassign a Worker to reception when its queue grows."
+    },
+    "next_awaiting": {
+      "phase": "awaiting",
+      "released_demand": 0,
+      "waiting_total": 0,
+      "active_total": 0,
+      "worker_assignment": "food",
+      "reception_capacity": 1,
+      "food_capacity": 2
+    }
+  },
+  "deterministic_validation": {
+    "vitest_files_passed": 3,
+    "vitest_tests_passed": 11,
+    "production_build": "PASS"
+  }
+}

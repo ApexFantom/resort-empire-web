@@ -60,9 +60,12 @@
         "src/core/runtime.test.ts",
         "src/app/App.tsx",
         "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
-        "git:229e868911da203b9acff1b07d7353cbe860b627"
+        "git:229e868911da203b9acff1b07d7353cbe860b627",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json"
       ],
-      "coverage_note": "awaiting→incoming→draining→complete proven; optional-upgrade→next-awaiting absent"
+      "coverage_note": "awaiting→incoming→draining→complete→next-awaiting and progressive release proven; actual optional-upgrade lifecycle step remains absent"
     },
     {
       "id": "CAN-FR-002",
@@ -87,16 +90,19 @@
       "obligation": "Each need is served with finite simultaneous capacity; excess demand waits in a queue; active service is distinct from waiting.",
       "provenance": "S3-P0060–P0072",
       "epistemic_class": "A",
-      "coverage_status": "PARTIAL",
-      "closure_disposition": null,
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
       "evidence_refs": [
         "src/core/state.ts",
         "src/core/runtime.test.ts",
         "src/app/App.tsx",
         "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
-        "git:229e868911da203b9acff1b07d7353cbe860b627"
+        "git:229e868911da203b9acff1b07d7353cbe860b627",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json"
       ],
-      "coverage_note": "finite queue/capacity proven; distinct active-service state not represented"
+      "coverage_note": "finite simultaneous capacity, excess waiting queue, and distinct active-service state proven deterministically and in real browser"
     },
     {
       "id": "CAN-FR-004",
@@ -104,16 +110,19 @@
       "obligation": "The game exposes bottlenecks and recovery at aggregate service level and makes staffing vs capacity causes distinguishable.",
       "provenance": "S1-SLIDE-09; S3-P0092–P0100, P0194–P0199; S4-P0077–P0108",
       "epistemic_class": "A",
-      "coverage_status": "PARTIAL",
-      "closure_disposition": null,
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
       "evidence_refs": [
         "src/core/state.ts",
         "src/core/runtime.test.ts",
         "src/app/App.tsx",
         "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
-        "git:229e868911da203b9acff1b07d7353cbe860b627"
+        "git:229e868911da203b9acff1b07d7353cbe860b627",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json"
       ],
-      "coverage_note": "bottleneck/staffing recovery proven; undersized-vs-understaffed decision layer absent"
+      "coverage_note": "aggregate bottleneck/recovery plus staffing-vs-capacity causal ownership proven; browser result visibly reports staffing cause and corrective action"
     },
     {
       "id": "CAN-FR-005",
@@ -138,16 +147,19 @@
       "obligation": "Wave Satisfaction derives from accumulated waiting history; no live numeric satisfaction/patience countdown; post-wave dissatisfaction is informational, not an extra penalty.",
       "provenance": "S3-P0074–P0090; S4-P0081, P0112–P0115",
       "epistemic_class": "A",
-      "coverage_status": "PARTIAL",
-      "closure_disposition": null,
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
       "evidence_refs": [
         "src/core/state.ts",
         "src/core/runtime.test.ts",
         "src/app/App.tsx",
         "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
-        "git:229e868911da203b9acff1b07d7353cbe860b627"
+        "git:229e868911da203b9acff1b07d7353cbe860b627",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json"
       ],
-      "coverage_note": "queue-pressure history affects rating; full Satisfaction/dissatisfaction semantics absent"
+      "coverage_note": "rating derives from accumulated waiting history; no live numeric satisfaction/patience countdown is exposed; post-wave wait information is informational only"
     },
     {
       "id": "CAN-FR-007",
@@ -179,9 +191,12 @@
         "src/core/runtime.test.ts",
         "src/app/App.tsx",
         "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
-        "git:229e868911da203b9acff1b07d7353cbe860b627"
+        "git:229e868911da203b9acff1b07d7353cbe860b627",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json"
       ],
-      "coverage_note": "causal result explanation proven; optional causal upgrade absent"
+      "coverage_note": "causal post-wave explanation and corrective guidance proven; separate optional upgrade action connected to the observed bottleneck remains unproven"
     },
     {
       "id": "CAN-FR-009",
@@ -244,16 +259,19 @@
       "obligation": "Prototype staff consists only of anonymous interchangeable Workers; one Worker slot per wave building; Workers are always assigned and fewer than buildings.",
       "provenance": "S2-P0043, P0070; S3-P0034–P0035, P0104–P0111",
       "epistemic_class": "A",
-      "coverage_status": "PARTIAL",
-      "closure_disposition": null,
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
       "evidence_refs": [
         "src/core/state.ts",
         "src/core/runtime.test.ts",
         "src/app/App.tsx",
         "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
-        "git:229e868911da203b9acff1b07d7353cbe860b627"
+        "git:229e868911da203b9acff1b07d7353cbe860b627",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json"
       ],
-      "coverage_note": "anonymous always-assigned Worker scarcity partially represented; full slot/interchangeability model absent"
+      "coverage_note": "anonymous interchangeable Worker model, one slot per normal-wave need, always-assigned worker, and worker scarcity relative to slots are enforced and tested"
     },
     {
       "id": "CAN-FR-015",
@@ -261,16 +279,19 @@
       "obligation": "Workers can be reassigned among eligible normal-wave buildings before and during waves, free and immediate, without confirmation.",
       "provenance": "S2-P0043; S3-P0106, P0114, P0119–P0120; S4-P0092–P0100",
       "epistemic_class": "A",
-      "coverage_status": "PARTIAL",
-      "closure_disposition": null,
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
       "evidence_refs": [
         "src/core/state.ts",
         "src/core/runtime.test.ts",
         "src/app/App.tsx",
         "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
-        "git:229e868911da203b9acff1b07d7353cbe860b627"
+        "git:229e868911da203b9acff1b07d7353cbe860b627",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json"
       ],
-      "coverage_note": "free immediate in-wave reassignment proven; pre-wave reassignment currently rejected"
+      "coverage_note": "free immediate Worker reassignment before and during waves is implemented; real browser proves pre-wave reassignment without confirmation"
     },
     {
       "id": "CAN-FR-016",
