@@ -1,0 +1,85 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification_id": "post-wave-capacity-upgrade-browser-acceptance-v1",
+  "verdict": "ACCEPTED",
+  "subject": {
+    "mission_id": "resort-empire-web-full-game-v1",
+    "distance_id": "distance:resort-post-wave-capacity-upgrade-v1",
+    "working_tree_base_commit": "96e6c1881b32ea5a3051cd879591253b2983b652"
+  },
+  "engines": {
+    "deterministic": "Vitest",
+    "real_browser": "chrome-devtools-mcp@1.10.1"
+  },
+  "browser": {
+    "target_url": "http://127.0.0.1:5173/?proof=capacity-upgrade",
+    "decisive_page_id": 2,
+    "page_resolution": "structured pageId with isolated DEV-only proof bootstrap"
+  },
+  "assertions": {
+    "capacity_bottleneck_result_visible": true,
+    "upgrade_suggestion_matches_observed_bottleneck": true,
+    "before_after_capacity_visible": true,
+    "coin_price_visible": true,
+    "resort_value_gain_visible": true,
+    "upgrade_uses_core_command_authority": true,
+    "upgrade_rejected_before_wave": true,
+    "upgrade_rejected_during_active_wave": true,
+    "worker_assignment_preserved_by_upgrade": true,
+    "building_level_persists_to_next_awaiting": true,
+    "worker_assignment_persists_to_next_awaiting": true,
+    "pixi_canvas_count": 1,
+    "console_error_count": 0,
+    "proof_bootstrap_persistence_isolated": true,
+    "numeric_upgrade_values_are_proof_tuning_not_product_requirements": true
+  },
+  "observations": {
+    "proof_bootstrap": {
+      "boot_id": "capacity-upgrade-browser-proof",
+      "phase": "awaiting",
+      "coins": 30,
+      "resort_value": 0,
+      "reception_capacity": 11,
+      "food_capacity": 1,
+      "worker_assignment": "reception"
+    },
+    "complete": {
+      "phase": "complete",
+      "rating": 5,
+      "bottleneck": "food",
+      "cause": "capacity",
+      "peak_queue_food": 2,
+      "accumulated_wait_food": 3,
+      "staffing_wait_food": 0,
+      "capacity_wait_food": 3,
+      "worker_assignment": "food"
+    },
+    "upgrade_suggestion": {
+      "building": "food",
+      "from_level": 1,
+      "to_level": 2,
+      "before_capacity": 2,
+      "after_capacity": 3,
+      "coin_price": 10,
+      "resort_value_gain": 1
+    },
+    "next_awaiting": {
+      "phase": "awaiting",
+      "coins": 20,
+      "resort_value": 1,
+      "food_level": 2,
+      "food_capacity": 3,
+      "worker_assignment": "food"
+    }
+  },
+  "deterministic_validation": {
+    "vitest_files_passed": 4,
+    "vitest_tests_passed": 13,
+    "production_build": "PASS"
+  },
+  "notes": [
+    "The DEV-only proof route exists because exhaustive reducer enumeration under default tuning produced 112 completed legal Worker trajectories and zero capacity-bottleneck results.",
+    "Proof tuning values are explicit verification fixtures and are not promoted to canonical product requirements.",
+    "The proof route bypasses persisted restore and suppresses pagehide persistence, so it does not contaminate normal gameplay state."
+  ]
+}

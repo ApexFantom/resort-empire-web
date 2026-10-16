@@ -53,8 +53,8 @@
       "obligation": "Wave lifecycle: awaiting/preparation → incoming/active → resolving/drain → complete/result → optional upgrade → next awaiting state; demand is progressively released.",
       "provenance": "S1-SLIDE-08; S3-P0037–P0055",
       "epistemic_class": "A",
-      "coverage_status": "PARTIAL",
-      "closure_disposition": null,
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
       "evidence_refs": [
         "src/core/state.ts",
         "src/core/runtime.test.ts",
@@ -63,9 +63,11 @@
         "git:229e868911da203b9acff1b07d7353cbe860b627",
         "src/persistence/DexieBootstrapPersistence.ts",
         "src/persistence/DexieBootstrapPersistence.test.ts",
-        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json"
+        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json",
+        "src/core/upgrade.test.ts",
+        "semantic/evidence/post-wave-capacity-upgrade-browser-acceptance-v1.json"
       ],
-      "coverage_note": "awaiting→incoming→draining→complete→next-awaiting and progressive release proven; actual optional-upgrade lifecycle step remains absent"
+      "coverage_note": "Full Prototype normal-wave lifecycle is proven through result-linked optional capacity upgrade and continuation to next awaiting; progressive demand release remains proven."
     },
     {
       "id": "CAN-FR-002",
@@ -184,8 +186,8 @@
       "obligation": "Post-wave results explain what went well/needs improvement and connect a suggested optional upgrade to the observed bottleneck.",
       "provenance": "S1-SLIDE-07–09; S2-P0048; S3-P0206; S4-P0110–P0126",
       "epistemic_class": "A",
-      "coverage_status": "PARTIAL",
-      "closure_disposition": null,
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
       "evidence_refs": [
         "src/core/state.ts",
         "src/core/runtime.test.ts",
@@ -194,9 +196,11 @@
         "git:229e868911da203b9acff1b07d7353cbe860b627",
         "src/persistence/DexieBootstrapPersistence.ts",
         "src/persistence/DexieBootstrapPersistence.test.ts",
-        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json"
+        "semantic/evidence/canonical-normal-wave-domain-browser-acceptance-v1.json",
+        "src/core/upgrade.test.ts",
+        "semantic/evidence/post-wave-capacity-upgrade-browser-acceptance-v1.json"
       ],
-      "coverage_note": "causal post-wave explanation and corrective guidance proven; separate optional upgrade action connected to the observed bottleneck remains unproven"
+      "coverage_note": "Post-wave result identifies the observed capacity bottleneck, explains the cause, and exposes an optional upgrade action tied to that bottleneck."
     },
     {
       "id": "CAN-FR-009",
@@ -393,10 +397,14 @@
       "obligation": "Prototype wave buildings have three levels; upgrades change capacity only, not Worker slots, quality or base service speed.",
       "provenance": "S3-P0186–P0190; S4-P0123",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/upgrade.test.ts",
+        "semantic/evidence/post-wave-capacity-upgrade-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Prototype wave buildings support levels 1-3; deterministic proof shows upgrades increase capacity while preserving Worker slots/assignment and leave base service tuning unchanged."
     },
     {
       "id": "CAN-FR-025",
@@ -415,10 +423,15 @@
       "obligation": "Permanent building upgrades occur between waves only; no permanent upgrade/construction-timer action is available mid-wave.",
       "provenance": "S2-P0067; S3-P0282–P0286; S4-P0070",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/upgrade.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/post-wave-capacity-upgrade-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Permanent capacity upgrade is unavailable before completion and during an active wave; the accepted UI path performs the upgrade only after wave completion."
     },
     {
       "id": "CAN-FR-027",
@@ -712,10 +725,14 @@
       "obligation": "Prototype economy exposes Coins and Energy plus Resort Value status; Reputation, Materials and Gems are absent.",
       "provenance": "S1-SLIDE-10,12; S3-P0034–P0035; S4-P0067",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
+      "coverage_status": "PARTIAL",
       "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/post-wave-capacity-upgrade-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Coins and Resort Value are implemented and visibly changed by the accepted upgrade path; Energy is still absent, so the full Prototype economy surface is not yet proven."
     },
     {
       "id": "CAN-FR-054",
@@ -767,10 +784,14 @@
       "obligation": "Upgrade Suggestion shows the proposed building, before/after capacity, Coin price and Resort Value gain.",
       "provenance": "S4-P0119–P0124",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/app/App.tsx",
+        "src/core/state.ts",
+        "semantic/evidence/post-wave-capacity-upgrade-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Real-browser Upgrade Suggestion shows Food, Lv1→Lv2, capacity 2→3, price 10 Coins and Resort Value +1; numeric values are proof tuning, not canonical requirements."
     },
     {
       "id": "CAN-FR-059",
@@ -778,10 +799,14 @@
       "obligation": "Prototype building upgrades cost Coins only.",
       "provenance": "S3-P0186–P0187; S4-P0124",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/upgrade.test.ts",
+        "semantic/evidence/post-wave-capacity-upgrade-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Prototype building upgrade spends Coins and changes Resort Value status; no second purchase currency is consumed by the upgrade command."
     },
     {
       "id": "CAN-FR-060",
