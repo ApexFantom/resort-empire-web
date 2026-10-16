@@ -1,0 +1,97 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification_id": "prototype-normal-wave-browser-acceptance-v1",
+  "verdict": "ACCEPTED",
+  "subject": {
+    "mission_id": "resort-empire-web-prototype-normal-wave-v1",
+    "distance_id": "distance:resort-prototype-normal-wave-browser-acceptance-v1",
+    "working_tree_base_commit": "de08dcb8f05a0a7822104b98fb11d60a67ee9428"
+  },
+  "engines": {
+    "deterministic": "Vitest",
+    "real_browser": "chrome-devtools-mcp@1.10.1"
+  },
+  "browser": {
+    "target_url": "http://127.0.0.1:5173/",
+    "decisive_page_id": 4,
+    "decisive_isolated_context": "r20-bottleneck-reassignment-proof",
+    "page_resolution": "structured exact-URL JSON"
+  },
+  "assertions": {
+    "legacy_persistence_boot_safe": true,
+    "react_projection_visible": true,
+    "pixi_canvas_count": 1,
+    "progressive_aggregate_demand_visible": true,
+    "finite_service_queue_bottleneck_visible": true,
+    "rendered_start_control_reaches_core": true,
+    "rendered_worker_control_reaches_core": true,
+    "worker_reassignment_same_tick": true,
+    "worker_reassignment_changes_capacity": true,
+    "worker_reassignment_targets_observed_queue": true,
+    "arrivals_end_then_drain_observed": true,
+    "wave_completion_visible": true,
+    "rating_and_causal_explanation_visible": true,
+    "causal_improvement_vs_control_observed": true,
+    "console_error_count_after_browser_policy_repair": 0,
+    "overlapping_browser_stack_added": false
+  },
+  "observations": {
+    "control_without_reassignment": {
+      "final_phase": "complete",
+      "rating": 3,
+      "aggregate_queue_pressure": 9,
+      "food_peak_queue": 3
+    },
+    "decisive_bottleneck": {
+      "simulation_tick": 128,
+      "phase": "incoming",
+      "released_demand": 2,
+      "food_queue": 1,
+      "food_capacity": 1,
+      "worker_assignment": "reception"
+    },
+    "immediate_reassignment": {
+      "simulation_tick": 128,
+      "from": "reception",
+      "to": "food",
+      "reception_capacity_before": 2,
+      "reception_capacity_after": 1,
+      "food_capacity_before": 1,
+      "food_capacity_after": 2,
+      "target_queue_at_change": 1
+    },
+    "accepted_completion": {
+      "simulation_tick": 132,
+      "phase": "complete",
+      "released_demand": 6,
+      "reception_queue": 0,
+      "food_queue": 0,
+      "reception_served": 6,
+      "food_served": 6,
+      "rating": 4,
+      "aggregate_queue_pressure": 7,
+      "result_explanation": "Worker worker-1 moved reception->food; food capacity 1->2 with queue 1."
+    },
+    "causal_comparison": {
+      "control_rating": 3,
+      "accepted_rating": 4,
+      "control_queue_pressure": 9,
+      "accepted_queue_pressure": 7
+    }
+  },
+  "browser_control_correction": {
+    "durable_owner": ".vibe/browser/browser-control.json",
+    "finding": "Vite HMR requires localhost WebSocket access in addition to HTTP page access.",
+    "required_patterns": [
+      "http://127.0.0.1:*",
+      "http://localhost:*",
+      "ws://127.0.0.1:*",
+      "ws://localhost:*"
+    ]
+  },
+  "deterministic_validation": {
+    "vitest_files_passed": 2,
+    "vitest_tests_passed": 6,
+    "production_build": "PASS"
+  }
+}

@@ -20,14 +20,14 @@
   "targetPolicy": {
     "allowedDevelopmentOrigins": [
       "http://127.0.0.1:*",
-      "http://localhost:*"
+      "http://localhost:*",
+      "ws://127.0.0.1:*",
+      "ws://localhost:*"
     ],
     "resolution": "Parse structured list_pages/new_page JSON and select the exact URL; never infer pageId by regex or selected position."
   },
   "evaluateScriptCliContract": {
-    "requiredPositional": [
-      "function"
-    ],
+    "requiredPositional": ["function"],
     "pageSelector": "--pageId <number>"
   },
   "devInspection": {
