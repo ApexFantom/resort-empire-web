@@ -42,9 +42,9 @@
     "canonical": 74,
     "fr": 66,
     "nfr": 8,
-    "proven": 4,
-    "partial": 7,
-    "unproven": 63
+    "proven": 16,
+    "partial": 2,
+    "unproven": 56
   },
   "obligations": [
     {
@@ -241,10 +241,16 @@
       "obligation": "Before a wave, the player sees the upcoming needs/demand forecast sufficiently to prepare Worker placement.",
       "provenance": "S3-P0046, P0114–P0117; S4-P0072",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/progression.test.ts",
+        "src/app/App.tsx",
+        "src/render/PixiProjection.ts",
+        "semantic/evidence/prototype-progression-spine-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Pre-wave Wave 1-of-8 forecast visibly exposes upcoming canonical needs and aggregate demand before Start, with Worker reassignment controls available for preparation; deterministic and real-browser evidence accepted."
     },
     {
       "id": "CAN-FR-013",
@@ -740,10 +746,16 @@
       "obligation": "Prototype starts with Reception/Restaurant/Beach Bar serving Rooms/Food/Drinks; Pool unlock adds Relax after Wave 3; Bungalows adds Ocean View after Wave 6.",
       "provenance": "S2-P0064; S3-P0034, P0125; S4-P0161",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
+      "coverage_status": "PARTIAL",
       "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/progression.test.ts",
+        "src/app/App.tsx",
+        "src/render/PixiProjection.ts",
+        "semantic/evidence/prototype-progression-spine-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Canonical Prototype starting content is implemented and browser-proven: Reception/Restaurant/Beach Bar serve Rooms/Food/Drinks and all three participate in the wave. Pool→Relax after Wave 3 and Bungalows→Ocean View after Wave 6 remain unimplemented, so the full obligation stays PARTIAL."
     },
     {
       "id": "CAN-FR-055",

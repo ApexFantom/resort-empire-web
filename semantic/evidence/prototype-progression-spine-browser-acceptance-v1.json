@@ -1,0 +1,115 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification_id": "prototype-progression-spine-browser-acceptance-v1",
+  "verdict": "ACCEPTED",
+  "subject": {
+    "mission_id": "resort-empire-web-full-game-v1",
+    "distance_id": "distance:resort-prototype-progression-spine-v1",
+    "working_tree_base_commit": "59ae88f1c8f09901e71f49df4e8d20ad2fce75c3"
+  },
+  "engines": {
+    "deterministic": "Vitest",
+    "real_browser": "chrome-devtools-mcp@1.10.1"
+  },
+  "browser": {
+    "target_url": "http://127.0.0.1:5173/?proof=capacity-upgrade",
+    "decisive_page_id": 2,
+    "page_resolution": "existing isolated DEV-only proof route"
+  },
+  "assertions": {
+    "pre_wave_forecast_visible": true,
+    "wave_identity_visible": true,
+    "prototype_total_waves_visible": true,
+    "canonical_starting_services_visible": true,
+    "canonical_starting_needs_visible": true,
+    "worker_reassignment_to_drinks_visible": true,
+    "drinks_participates_in_live_wave": true,
+    "all_three_starting_services_complete_demand": true,
+    "next_wave_identity_visible": true,
+    "next_wave_forecast_preserves_three_starting_needs": true,
+    "legacy_in_progress_two_service_wave_preserved_deterministically": true,
+    "pixi_canvas_count": 1,
+    "console_error_count": 0,
+    "proof_bootstrap_persistence_isolated": true
+  },
+  "observations": {
+    "pre_wave": {
+      "phase": "awaiting",
+      "wave_number": 1,
+      "total_waves": 8,
+      "total_demand": 6,
+      "needs": [
+        {
+          "service": "reception",
+          "building": "Reception",
+          "need": "Rooms"
+        },
+        {
+          "service": "food",
+          "building": "Restaurant",
+          "need": "Food"
+        },
+        {
+          "service": "drinks",
+          "building": "Beach Bar",
+          "need": "Drinks"
+        }
+      ],
+      "worker_assignment": "reception"
+    },
+    "worker_reassignment": {
+      "from": "reception",
+      "to": "drinks",
+      "visible_target": "Beach Bar · Drinks"
+    },
+    "live_wave": {
+      "phase": "draining",
+      "released_demand": 6,
+      "total_demand": 6,
+      "worker_assignment": "drinks",
+      "served": {
+        "reception": 6,
+        "food": 5,
+        "drinks": 6
+      },
+      "food_peak_queue": 4
+    },
+    "complete": {
+      "phase": "complete",
+      "served": {
+        "reception": 6,
+        "food": 6,
+        "drinks": 6
+      },
+      "worker_assignment": "drinks",
+      "rating": 2,
+      "bottleneck": "food",
+      "cause": "staffing"
+    },
+    "next_awaiting": {
+      "phase": "awaiting",
+      "wave_number": 2,
+      "total_waves": 8,
+      "total_demand": 6,
+      "needs": [
+        "reception",
+        "food",
+        "drinks"
+      ],
+      "worker_assignment": "drinks"
+    }
+  },
+  "deterministic_validation": {
+    "progression_contracts": [
+      "canonical three-service starting catalog",
+      "Wave 1-of-8 forecast",
+      "wave identity advances on Continue",
+      "legacy active two-service migration keeps Drinks inactive"
+    ],
+    "production_build": "PASS"
+  },
+  "notes": [
+    "The existing capacity-upgrade DEV proof route bypasses normal persisted restore and was reused only as an isolated browser bootstrap; no new browser mutation authority was added.",
+    "CAN-FR-054 is only partially satisfied by this evidence because Pool/Relax and Bungalows/Ocean View milestone unlocks are not implemented by this Distance."
+  ]
+}
