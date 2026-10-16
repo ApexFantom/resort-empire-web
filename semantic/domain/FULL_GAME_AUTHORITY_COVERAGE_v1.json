@@ -1,0 +1,985 @@
+{
+  "schema": "resort-full-game-authority-coverage/v1",
+  "mission_id": "resort-empire-full-game-completion-v1",
+  "generated_from": {
+    "requirements": {
+      "path": "RESORT_EMPIRE_REQUIREMENTS_FINAL(2).md",
+      "sha256": "50ecd9c802fbe7229504e9e290edfa2bb6b25a923e0d1459fa00eeeacab2b1de"
+    },
+    "product_route": {
+      "path": "semantic/domain/PRODUCT.md",
+      "sha256": "ee3ad7322ef125a178688bb8f9dd423bc09bb8440bb17017916676c064e0b4e6"
+    },
+    "sealed_gameplay_commit": "229e868911da203b9acff1b07d7353cbe860b627",
+    "accepted_gameplay_evidence": {
+      "path": "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+      "sha256": "f3704076ab58b6ae559ebf20754e9dc9736b9e95c350acc38e552fc0beab1f28"
+    }
+  },
+  "policy": {
+    "coverage_status": [
+      "PROVEN",
+      "PARTIAL",
+      "UNPROVEN"
+    ],
+    "closure_disposition_allowed": [
+      "IMPLEMENTED_PROVEN",
+      "SUPERSEDED_BY_AUTHORITY",
+      "NON_BINDING_EXAMPLE",
+      "RESOLVED_OPEN",
+      "RESOLVED_TUNING"
+    ],
+    "closure_disposition_rule": "unset until final obligation disposition is actually proven",
+    "open_tuning_not_hard_requirements": true,
+    "fixed_roadmap": false
+  },
+  "visual_direction": {
+    "final": "true 3D Resort Empire",
+    "current": "replaceable PixiJS 2.5D/isometric Prototype projection",
+    "core_constraint": "renderer-independent pure TypeScript gameplay/economy/simulation authority"
+  },
+  "counts": {
+    "canonical": 74,
+    "fr": 66,
+    "nfr": 8,
+    "proven": 4,
+    "partial": 7,
+    "unproven": 63
+  },
+  "obligations": [
+    {
+      "id": "CAN-FR-001",
+      "phase": "Prototype / Cross",
+      "obligation": "Wave lifecycle: awaiting/preparation → incoming/active → resolving/drain → complete/result → optional upgrade → next awaiting state; demand is progressively released.",
+      "provenance": "S1-SLIDE-08; S3-P0037–P0055",
+      "epistemic_class": "A",
+      "coverage_status": "PARTIAL",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "awaiting→incoming→draining→complete proven; optional-upgrade→next-awaiting absent"
+    },
+    {
+      "id": "CAN-FR-002",
+      "phase": "Cross",
+      "obligation": "Normal guests are aggregate demand; the player manages the resort system rather than individual normal guests.",
+      "provenance": "S1-SLIDE-07,11; S2-P0040; S3-P0076; S4-P0010–P0011",
+      "epistemic_class": "A",
+      "coverage_status": "PROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "Direct current core plus deterministic/browser acceptance evidence."
+    },
+    {
+      "id": "CAN-FR-003",
+      "phase": "Prototype / Cross",
+      "obligation": "Each need is served with finite simultaneous capacity; excess demand waits in a queue; active service is distinct from waiting.",
+      "provenance": "S3-P0060–P0072",
+      "epistemic_class": "A",
+      "coverage_status": "PARTIAL",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "finite queue/capacity proven; distinct active-service state not represented"
+    },
+    {
+      "id": "CAN-FR-004",
+      "phase": "Prototype / Cross",
+      "obligation": "The game exposes bottlenecks and recovery at aggregate service level and makes staffing vs capacity causes distinguishable.",
+      "provenance": "S1-SLIDE-09; S3-P0092–P0100, P0194–P0199; S4-P0077–P0108",
+      "epistemic_class": "A",
+      "coverage_status": "PARTIAL",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "bottleneck/staffing recovery proven; undersized-vs-understaffed decision layer absent"
+    },
+    {
+      "id": "CAN-FR-005",
+      "phase": "Prototype / Cross",
+      "obligation": "Arrival timer ends new arrivals only; unresolved queues drain; normal guests do not leave during an active wave.",
+      "provenance": "S3-P0063–P0067, P0086–P0090, P0200–P0201",
+      "epistemic_class": "A",
+      "coverage_status": "PROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "Direct current core plus deterministic/browser acceptance evidence."
+    },
+    {
+      "id": "CAN-FR-006",
+      "phase": "Prototype / Cross",
+      "obligation": "Wave Satisfaction derives from accumulated waiting history; no live numeric satisfaction/patience countdown; post-wave dissatisfaction is informational, not an extra penalty.",
+      "provenance": "S3-P0074–P0090; S4-P0081, P0112–P0115",
+      "epistemic_class": "A",
+      "coverage_status": "PARTIAL",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "queue-pressure history affects rating; full Satisfaction/dissatisfaction semantics absent"
+    },
+    {
+      "id": "CAN-FR-007",
+      "phase": "Prototype / Cross",
+      "obligation": "Normal-wave rating has a non-zero floor and must distinguish poor from competent play; exact thresholds remain tuning.",
+      "provenance": "S3-P0081–P0084; S4-P0116",
+      "epistemic_class": "A",
+      "coverage_status": "PROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "Direct current core plus deterministic/browser acceptance evidence."
+    },
+    {
+      "id": "CAN-FR-008",
+      "phase": "Cross",
+      "obligation": "Post-wave results explain what went well/needs improvement and connect a suggested optional upgrade to the observed bottleneck.",
+      "provenance": "S1-SLIDE-07–09; S2-P0048; S3-P0206; S4-P0110–P0126",
+      "epistemic_class": "A",
+      "coverage_status": "PARTIAL",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "causal result explanation proven; optional causal upgrade absent"
+    },
+    {
+      "id": "CAN-FR-009",
+      "phase": "Prototype / Cross",
+      "obligation": "Closing/backgrounding during a wave freezes and persists exact wave state; no offline wave advance.",
+      "provenance": "S1-SLIDE-08; S3-P0044, P0051, P0192, P0205; S4-P0076",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-010",
+      "phase": "Cross",
+      "obligation": "Primary income comes from completed waves, not passive building ticks; structural Coin reward is volume × per-unit value × rating modifier.",
+      "provenance": "S1-SLIDE-05; S2-P0020, P0040; S3-P0177–P0183",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-011",
+      "phase": "Prototype / Cross",
+      "obligation": "An eligible but unpurchased area may remain deferred, and its need must not spawn until the area is bought.",
+      "provenance": "S3-P0054, WR9, P0183–P0185; S4-P0071, P0163–P0168",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-012",
+      "phase": "Prototype / Cross",
+      "obligation": "Before a wave, the player sees the upcoming needs/demand forecast sufficiently to prepare Worker placement.",
+      "provenance": "S3-P0046, P0114–P0117; S4-P0072",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-013",
+      "phase": "Prototype / Cross",
+      "obligation": "A newly introduced need debuts softly and established needs do not simultaneously increase in that debut wave; exact ratio is tuning.",
+      "provenance": "S2-P0064; S3-P0161–P0163, P0209",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-014",
+      "phase": "Prototype",
+      "obligation": "Prototype staff consists only of anonymous interchangeable Workers; one Worker slot per wave building; Workers are always assigned and fewer than buildings.",
+      "provenance": "S2-P0043, P0070; S3-P0034–P0035, P0104–P0111",
+      "epistemic_class": "A",
+      "coverage_status": "PARTIAL",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "anonymous always-assigned Worker scarcity partially represented; full slot/interchangeability model absent"
+    },
+    {
+      "id": "CAN-FR-015",
+      "phase": "Prototype / Cross",
+      "obligation": "Workers can be reassigned among eligible normal-wave buildings before and during waves, free and immediate, without confirmation.",
+      "provenance": "S2-P0043; S3-P0106, P0114, P0119–P0120; S4-P0092–P0100",
+      "epistemic_class": "A",
+      "coverage_status": "PARTIAL",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "free immediate in-wave reassignment proven; pre-wave reassignment currently rejected"
+    },
+    {
+      "id": "CAN-FR-016",
+      "phase": "Prototype / Cross",
+      "obligation": "A staffed building runs at staffed performance; an unstaffed building remains operational but slower; movement changes current service immediately and visibly.",
+      "provenance": "S2-P0043–P0045; S3-P0073, P0106–P0120; S4-P0104–P0108",
+      "epistemic_class": "A",
+      "coverage_status": "PROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/runtime.test.ts",
+        "src/app/App.tsx",
+        "semantic/evidence/prototype-normal-wave-browser-acceptance-v1.json",
+        "git:229e868911da203b9acff1b07d7353cbe860b627"
+      ],
+      "coverage_note": "Direct current core plus deterministic/browser acceptance evidence."
+    },
+    {
+      "id": "CAN-FR-017",
+      "phase": "Prototype / Cross",
+      "obligation": "Worker assignments persist between waves; a Worker bundled with a newly unlocked normal building starts on that building.",
+      "provenance": "S3-P0112–P0116; S4-P0100",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-018",
+      "phase": "MVP",
+      "obligation": "Worker slots limit occupancy; Workers can move to already staffed buildings only when a slot is free; Workers are never kept unassigned.",
+      "provenance": "S3-P0265, P0269–P0272",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-019",
+      "phase": "MVP",
+      "obligation": "Total Workers remain below total slots; additional Workers are hired for Coins only between waves and placed directly into a free slot.",
+      "provenance": "S3-P0267–P0274; S4-P0125",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-020",
+      "phase": "MVP",
+      "obligation": "Additional Workers on the same building have diminishing marginal effect; exact curve is tuning.",
+      "provenance": "S3-P0266",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-021",
+      "phase": "MVP",
+      "obligation": "Managers are named building-linked specialists, hired once for Coins between waves; they multiply building performance but are never required for building operation.",
+      "provenance": "S2-P0044; S3-P0250–P0255",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-022",
+      "phase": "MVP",
+      "obligation": "Specialists are named VIP roles without wave buildings, hired for Coins; they do not affect ordinary-wave performance.",
+      "provenance": "S2-P0046; S3-P0232, P0250–P0252",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-023",
+      "phase": "MVP",
+      "obligation": "Building level, Worker allocation and Manager/Energy modifiers form distinct nonredundant control layers.",
+      "provenance": "S2-P0067; S3-P0240–P0262",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-024",
+      "phase": "Prototype",
+      "obligation": "Prototype wave buildings have three levels; upgrades change capacity only, not Worker slots, quality or base service speed.",
+      "provenance": "S3-P0186–P0190; S4-P0123",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-025",
+      "phase": "MVP",
+      "obligation": "Five normal wave buildings extend to Lv1–5; Lv4 adds Worker slot/quality without extra capacity; Lv5 adds capacity, slot and quality.",
+      "provenance": "S3-P0275–P0281",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-026",
+      "phase": "Cross",
+      "obligation": "Permanent building upgrades occur between waves only; no permanent upgrade/construction-timer action is available mid-wave.",
+      "provenance": "S2-P0067; S3-P0282–P0286; S4-P0070",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-027",
+      "phase": "Cross",
+      "obligation": "Energy is optional assistance, never a participation/progression gate; zero Energy does not block service, waves or Worker movement.",
+      "provenance": "S1-SLIDE-12; S2-P0054; S3-P0008–P0010, P0259–P0262",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-028",
+      "phase": "Cross",
+      "obligation": "A fully prepared resort can achieve the highest normal-wave rating without Energy.",
+      "provenance": "S1-SLIDE-09; S2-P0054; S3-P0008, WR8",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-029",
+      "phase": "Prototype / MVP",
+      "obligation": "Wave Energy Mode A temporarily increases service speed of one building and does not increase capacity; it works during arrival and drain.",
+      "provenance": "S3-P0141–P0148, P0262; S4-P0083",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-030",
+      "phase": "Cross",
+      "obligation": "Energy is earned from completed gameplay and optional rewarded video; it does not regenerate offline.",
+      "provenance": "S2-P0054; S3-P0010, P0146–P0148",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-031",
+      "phase": "Prototype",
+      "obligation": "Prototype Energy storage is uncapped; later cap activation is an MVP tuning/open item.",
+      "provenance": "S3-P0148; S3-P0333",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-032",
+      "phase": "Prototype",
+      "obligation": "Sudden Rush is extra demand inside the normal wave, does not pause the wave, always has Worker movement as a valid primary response, is not forecast, and is solvable without Energy.",
+      "provenance": "S3-P0133–P0140, P0210; S4-P0173",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-033",
+      "phase": "MVP",
+      "obligation": "MVP VIP flow consists of Preview → Request Board → VIP Complete while the normal-wave core remains active.",
+      "provenance": "S1-SLIDE-11–13; S3-P0230, P0303–P0314; S4-P0128–P0157",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-034",
+      "phase": "MVP",
+      "obligation": "VIP participation is optional and parallel; Accept / Maybe later / Decline are available without punishment.",
+      "provenance": "S1-SLIDE-11; S2-P0050; S3-P0304–P0305; S4-P0131–P0134",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-035",
+      "phase": "MVP",
+      "obligation": "Before acceptance the game presents readiness information, including relevant building/role gaps and their quality impact.",
+      "provenance": "S3-P0310; S4-P0132–P0137",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-036",
+      "phase": "MVP",
+      "obligation": "VIP preparedness is not Worker allocation; the Request Board uses Fix for consumable gaps and Speed Up with Energy where applicable.",
+      "provenance": "S3-P0012, P0307–P0314; S4-P0141–P0148, P0187",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-037",
+      "phase": "MVP",
+      "obligation": "Consumable missing resources are immediately repairable; roster/building gaps lower request quality ceiling instead of blocking the request.",
+      "provenance": "S2-P0052; S3-P0308–P0310; S4-P0142–P0143",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-038",
+      "phase": "MVP",
+      "obligation": "VIP request cards use MISSING, READY, IN_PROGRESS and COMPLETED states; quality cap is an attribute, not a separate state.",
+      "provenance": "S3-P0313; S4-P0148",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-039",
+      "phase": "MVP",
+      "obligation": "Managers/Specialists are reusable roster prerequisites for VIP requests; missing required roles lower attainable quality.",
+      "provenance": "S2-P0046, P0052; S3-P0310",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-040",
+      "phase": "MVP",
+      "obligation": "MVP contains four VIP types: Travel Blogger, Wedding Couple, Investor and Influencer.",
+      "provenance": "S1-SLIDE-11; S2-P0050; S3-P0239",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-041",
+      "phase": "MVP",
+      "obligation": "Spa is a VIP-oriented building with no normal-wave need and no Worker slot; its absence may reduce quality for Spa-dependent VIP requests.",
+      "provenance": "S1-SLIDE-10; S3-P0232, P0311; S4-P0169",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-042",
+      "phase": "MVP",
+      "obligation": "At least two of the four VIP types must contain a Spa-dependent request.",
+      "provenance": "S3-P0311",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-043",
+      "phase": "MVP",
+      "obligation": "The five normal-wave need types remain unchanged in MVP; VIP uses requests rather than additional normal needs.",
+      "provenance": "S3-P0239, P0306–P0307",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-044",
+      "phase": "MVP",
+      "obligation": "VIP completion gives a larger reward spike; Reputation is primary, with Coins/Energy/Materials/Resort Value and possible decor, without devaluing normal waves.",
+      "provenance": "S2-P0050; S3-P0312; S4-P0155–P0156",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-045",
+      "phase": "Cross",
+      "obligation": "Resort Value is a non-spendable prestige/status measure that only increases.",
+      "provenance": "S1-SLIDE-12; S2-P0057; S3-P0315–P0318",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-046",
+      "phase": "MVP",
+      "obligation": "Reputation is cumulative, never spent/decreased, and unlocks content via thresholds.",
+      "provenance": "S1-SLIDE-12; S2-P0058–P0059; S3-P0315–P0318",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-047",
+      "phase": "Prototype / MVP",
+      "obligation": "Unlocking is two-step: an eligibility gate makes content available and Coins purchase it; Prototype uses milestones, MVP uses Reputation thresholds.",
+      "provenance": "S2-P0059; S3-P0015, P0184–P0185, P0318; S4-P0163",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-048",
+      "phase": "MVP",
+      "obligation": "Materials are used as consumables for VIP Fix and together with Coins for Lv4–5 building upgrades.",
+      "provenance": "S2-P0062; S3-P0279, P0319–P0320",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-049",
+      "phase": "MVP",
+      "obligation": "Materials are earned from completed VIP play and may also drop from sufficiently high-rated normal waves; exact amounts/thresholds are tuning.",
+      "provenance": "S3-P0320",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-050",
+      "phase": "MVP",
+      "obligation": "Gems are reserved for permanent premium purchases and cannot accelerate gameplay or convert to Energy.",
+      "provenance": "S2-P0062; S3-P0320–P0321",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-051",
+      "phase": "MVP",
+      "obligation": "Rewarded-video/IAP hooks are voluntary and must not punish nonpayment; exact placements and SKUs are not hard requirements.",
+      "provenance": "S3-P0322–P0326",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-052",
+      "phase": "MVP",
+      "obligation": "Paid staff convenience cannot bypass the Worker population cap.",
+      "provenance": "S3-P0325",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-053",
+      "phase": "Prototype",
+      "obligation": "Prototype economy exposes Coins and Energy plus Resort Value status; Reputation, Materials and Gems are absent.",
+      "provenance": "S1-SLIDE-10,12; S3-P0034–P0035; S4-P0067",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-054",
+      "phase": "Prototype",
+      "obligation": "Prototype starts with Reception/Restaurant/Beach Bar serving Rooms/Food/Drinks; Pool unlock adds Relax after Wave 3; Bungalows adds Ocean View after Wave 6.",
+      "provenance": "S2-P0064; S3-P0034, P0125; S4-P0161",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-055",
+      "phase": "Prototype / Cross",
+      "obligation": "Starting a wave automatically opens/exposes the Wave Needs Panel.",
+      "provenance": "S4-P0057",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-056",
+      "phase": "Prototype",
+      "obligation": "Wave Needs Panel is a side panel over/alongside the island and must accommodate 3→4→5 visible needs without becoming a dense table.",
+      "provenance": "S4-P0022, P0077–P0091",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-057",
+      "phase": "Prototype / Cross",
+      "obligation": "Worker Allocation is a modal/bottom sheet that returns to the context from which it was opened.",
+      "provenance": "S4-P0022, P0058, P0092–P0100",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-058",
+      "phase": "Prototype",
+      "obligation": "Upgrade Suggestion shows the proposed building, before/after capacity, Coin price and Resort Value gain.",
+      "provenance": "S4-P0119–P0124",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-059",
+      "phase": "Prototype",
+      "obligation": "Prototype building upgrades cost Coins only.",
+      "provenance": "S3-P0186–P0187; S4-P0124",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-060",
+      "phase": "MVP",
+      "obligation": "The investment surface presents distinct alternatives for building upgrade, Hire Manager and Hire Worker.",
+      "provenance": "S3-P0251; S4-P0125",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-061",
+      "phase": "MVP",
+      "obligation": "VIP Preview shows a potential reward range consistent in scale with the actual VIP completion reward.",
+      "provenance": "S4-P0132–P0133",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-062",
+      "phase": "Prototype / MVP",
+      "obligation": "Area Unlock supports locked / available / not affordable / unlocked states; an available deferred unlock can be reopened; Prototype communicates new content, included Worker and Coin price.",
+      "provenance": "S3-P0054, P0184–P0185; S4-P0159–P0169",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-063",
+      "phase": "MVP",
+      "obligation": "Home VIP panel is conditional and secondary, appearing only when a VIP is waiting.",
+      "provenance": "S4-P0075, P0186",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-064",
+      "phase": "Prototype / Cross",
+      "obligation": "Reception/Rooms and Bungalows/Ocean View have distinct semantics: standard accommodation vs premium ocean-view experience.",
+      "provenance": "S2-P0064; S3-P0126",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-065",
+      "phase": "Cross",
+      "obligation": "Inactivity cannot degrade the resort or reduce progression.",
+      "provenance": "S1-SLIDE-06–07; S2-P0061",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-FR-066",
+      "phase": "Cross",
+      "obligation": "Return after inactivity provides a fixed comeback reward rather than a reward proportional to elapsed time.",
+      "provenance": "S2-P0061",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-NFR-001",
+      "phase": "Cross",
+      "obligation": "The product targets mobile landscape orientation.",
+      "provenance": "S1-SLIDE-05; S4-P0014–P0015",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-NFR-002",
+      "phase": "Cross",
+      "obligation": "A normal production session should be a closed 3–7 minute experience, usually one or two waves plus one investment.",
+      "provenance": "S1-SLIDE-05,07; S2-P0018, P0037; S4-P0017",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-NFR-003",
+      "phase": "Cross",
+      "obligation": "Interaction must feel calm and managerial rather than reflex/stress based.",
+      "provenance": "S1-SLIDE-06–07; S2-P0014, P0020; S4-P0019",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-NFR-004",
+      "phase": "Cross",
+      "obligation": "Each screen/focused surface must present one clear primary action.",
+      "provenance": "S1-SLIDE-13; S4-P0018",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-NFR-005",
+      "phase": "Cross",
+      "obligation": "Growth and operational state must be visually legible; important structural differences must be understandable on mobile.",
+      "provenance": "S1-SLIDE-06–07; S3-P0127–P0130; S4-P0084–P0085",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-NFR-006",
+      "phase": "Cross / MVP",
+      "obligation": "The UX must avoid aggressive upgrade/payment pressure and coercive monetization patterns.",
+      "provenance": "S1-SLIDE-06,15; S4-P0126; S3-P0326",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-NFR-007",
+      "phase": "Cross",
+      "obligation": "Returning after inactivity must feel positive rather than punitive.",
+      "provenance": "S1-SLIDE-06–07; S2-P0015, P0061",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    },
+    {
+      "id": "CAN-NFR-008",
+      "phase": "Cross",
+      "obligation": "Information density must remain bounded; the UI must not become a dense spreadsheet and must not force warnings/CTAs when no problem exists.",
+      "provenance": "S2-P0020; S3-P0192; S4-P0073, P0079, P0091",
+      "epistemic_class": "A",
+      "coverage_status": "UNPROVEN",
+      "closure_disposition": null,
+      "evidence_refs": [],
+      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+    }
+  ],
+  "acceptance_criteria": [
+    {
+      "id": "AC-001",
+      "text": "`wave_sim.py` must show no WR7/WR8 violation before Prototype playtest."
+    },
+    {
+      "id": "AC-002",
+      "text": "player identifies a bottleneck and moves a Worker before being explicitly told."
+    },
+    {
+      "id": "AC-003",
+      "text": "Worker allocation is a meaningful choice, not a trivial lookup."
+    },
+    {
+      "id": "AC-004",
+      "text": "player distinguishes understaffed vs undersized building and selects Worker move vs upgrade accordingly."
+    },
+    {
+      "id": "AC-005",
+      "text": "player understands ordinary guests as aggregate system demand."
+    },
+    {
+      "id": "AC-006",
+      "text": "wave completion + upgrade feels satisfying rather than obligatory; player can explain what to improve next."
+    },
+    {
+      "id": "AC-007",
+      "text": "Pool and Bungalows unlocks create desire to continue."
+    },
+    {
+      "id": "AC-008",
+      "text": "MVP core remains engaging after several waves."
+    },
+    {
+      "id": "AC-009",
+      "text": "VIP feels like an opportunity/spike, not interruption or punishment."
+    },
+    {
+      "id": "AC-010",
+      "text": "monetization hooks fit without punishing nonpayment."
+    },
+    {
+      "id": "AC-011",
+      "text": "return after inactivity is positive and does not show degradation."
+    },
+    {
+      "id": "AC-012",
+      "text": "player can explain why they want to return."
+    }
+  ],
+  "conflicts_and_inconsistencies": "## 6. Conflicts / inconsistencies\n\n### CF-001 — VIP acceptance eligibility — **OPEN**\n\nEvidence is asymmetric:\n\n- S2-P0052: the player can always accept a VIP; roster/building shortages reduce attainable quality.\n- S4-P0136: `Risky` means it is still possible, but with a lower quality ceiling.\n- S4-P0138: says that if a VIP *cannot* be accepted, e.g. because of insufficient capacity, that must not feel punitive.\n\nThe detailed repeated model favors **non-blocking degradation**, but S4-P0138 introduces a possible acceptance-block condition that is not defined elsewhere. The final requirements therefore do **not** invent a capacity-block rule. RRH clarification is required.\n\n### CF-002 — S3 Worker Allocation shared with VIP — **resolved by authority**\n\nS4-P0196 broadly lists S3 as shared across wave/VIP, but S4-P0187 explicitly states that S3 is only for normal waves, and S3 detailed Build authority defines VIP preparedness through Fix/Speed Up rather than Worker allocation. The detailed current rule is used; P0196 is treated as an editorial summary inconsistency.\n",
+  "open_and_tuning": "## 7. OPEN / TUNING items\n\nThe following are deliberately **not** hard-coded into the final FR/NFR list:\n\n1. **VIP acceptance edge case** — whether any condition can make a VIP unaccept-able (CF-001).\n2. **VIP rating thresholds** — old VIP scale vs current normal-wave scale.\n3. **Coin balancing** — final coefficients/prices so upgrades and unlocks land on intended pacing.\n4. **Energy Mode B in normal waves** — explicitly open; VIP READY-stage compensation exists, but no hard normal-wave Mode B requirement is admitted.\n5. **Final Worker hiring cap ratio** — scarcity is hard; exact ratio (e.g. 80%) is tuning.\n6. **Spa progression** — number of levels and exact effects.\n7. **Reputation milestones**.\n8. **Manager / Specialist / Worker prices**.\n9. **Materials drop rates and amounts**.\n10. **Satisfaction curve and exact star thresholds**.\n11. **Energy cap activation in MVP**.\n12. **Prototype wave/service parameters** such as exact arrival duration, service time, empty utilization, hysteresis and demand tables.\n13. **Exact upgrade/unlock prices**, reward coefficients and worked-example numbers.\n14. **Exact Sudden Rush timing/amount**, Energy cost/duration/magnitude.\n15. **Exact visual mapping** such as colors, icons, animation choices and dissatisfied-guest counts.\n",
+  "acceptance_context": "## 10. Acceptance evidence retained separately from requirements\n\nThe Build document contains validation evidence / exit criteria that are useful for testing but are not copied verbatim into the FR/NFR list:\n\n- **AC-001:** `wave_sim.py` must show no WR7/WR8 violation before Prototype playtest.\n- **AC-002:** player identifies a bottleneck and moves a Worker before being explicitly told.\n- **AC-003:** Worker allocation is a meaningful choice, not a trivial lookup.\n- **AC-004:** player distinguishes understaffed vs undersized building and selects Worker move vs upgrade accordingly.\n- **AC-005:** player understands ordinary guests as aggregate system demand.\n- **AC-006:** wave completion + upgrade feels satisfying rather than obligatory; player can explain what to improve next.\n- **AC-007:** Pool and Bungalows unlocks create desire to continue.\n- **AC-008:** MVP core remains engaging after several waves.\n- **AC-009:** VIP feels like an opportunity/spike, not interruption or punishment.\n- **AC-010:** monetization hooks fit without punishing nonpayment.\n- **AC-011:** return after inactivity is positive and does not show degradation.\n- **AC-012:** player can explain why they want to return.\n",
+  "source_coverage_audit": "## 11. Source-coverage audit\n\nCoverage is sufficient for this coursework deliverable because:\n\n- **S1** was used for the product promise, platform/session target, player experience, broad loop, phase framing, VIP concept, currencies and growth direction.\n- **S2** was used through its current Version IV overview, including core loop, staff, upgrades, VIP, Energy, prestige/Reputation, inactivity and current decision status.\n- **S3** was used through the end of the Prototype and MVP Build sections, including state machines, hard wave rules, Worker/Manager/Specialist model, upgrades, VIP preparedness, economy roles, monetization boundaries, exit criteria and remaining open points.\n- **S4** was used across the current S1–S9 interaction contract, including obsolete Version III supersession, normal vs VIP paradigms, navigation, Worker UI, result/upgrade flows, VIP flows, Area Unlock and phase summary.\n- **S5** was used only to shape the coursework output and requirements-engineering method.\n- **S6** is explicitly recorded as a missing visual source rather than silently inferred.\n\nThe candidate extraction closed at **CR-001…CR-200**, and reconciliation accounted for the entire candidate set across four domain passes. Acceptance evidence, conflicts, open/tuning values and non-requirements were kept separate. No known unprocessed current Prototype/MVP product domain remains in S1–S4.\n\n# Part II — Final Coursework Output\n"
+}
