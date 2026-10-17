@@ -1,0 +1,78 @@
+{
+  "schema": "resort-prototype-canonical-coverage-evidence/v1",
+  "status": "accepted",
+  "authority": "RESORT_EMPIRE_REQUIREMENTS_FINAL(2).md",
+  "scope": "Prototype and applicable Cross-phase requirements",
+  "checkpointBase": "67837b8078c9cf627af13b1bf1b1640b3f56a4f8",
+  "accepted": {
+    "core": [
+      "normal-wave lifecycle and progressive aggregate demand",
+      "finite capacity, queues, drain and accumulated-wait satisfaction",
+      "bottleneck cause separation",
+      "structural completed-wave Coin income",
+      "forecast and soft-debut progression",
+      "Worker persistence and immediate reassignment",
+      "three-level capacity-only upgrades",
+      "Pool/Bungalows eligibility-purchase unlocks and deferred needs",
+      "optional non-gating Energy with arrival/drain speed boost and uncapped Prototype storage",
+      "unforecast Sudden Rush solvable without Energy",
+      "Coins/Energy/Resort Value economy surface",
+      "exact inactivity freeze with no offline simulation advance",
+      "fixed non-proportional comeback reward"
+    ],
+    "ui": [
+      "Wave Needs exposure",
+      "Worker Allocation aria-modal bottom-sheet behavior",
+      "Upgrade Suggestion fields",
+      "positive Welcome back reward presentation",
+      "mobile-landscape gameplay surface"
+    ],
+    "scopeNotes": [
+      "Prototype is a feel-validation build, not monetization validation",
+      "rewarded-video integration is deferred with voluntary monetization hooks to MVP while gameplay-earned Energy/no-offline-regeneration remain covered"
+    ]
+  },
+  "verification": {
+    "typescript": "pass",
+    "tests": {
+      "files": 9,
+      "tests": 34,
+      "status": "pass"
+    },
+    "productionBuild": "pass",
+    "diffCheck": "pass",
+    "browser": {
+      "viewport": "844x390 mobile touch landscape",
+      "orientation": "landscape-primary",
+      "documentExtent": "844x390",
+      "worldWithinViewport": true,
+      "hudWithinViewport": true,
+      "waveNeedsWithinViewport": true,
+      "contextTrayWithinViewport": true,
+      "canvasMounted": true,
+      "viteOverlay": false
+    },
+    "comeback": {
+      "qualifiedReturnNotice": "Welcome back",
+      "fixedCoinReward": 5,
+      "noElapsedProportionality": true
+    }
+  },
+  "durability": {
+    "rootArtifacts": "removed and ignored as one-shot acceptance residue",
+    "canonicalTests": [
+      "src/core/prototypeEvents.test.ts",
+      "src/runtime/PrototypeInactivity.test.ts",
+      "src/runtime/SimulationClock.test.ts"
+    ],
+    "implementation": [
+      "src/core/state.ts",
+      "src/main.tsx",
+      "src/runtime/PrototypeInactivity.ts",
+      "src/persistence/DexieBootstrapPersistence.ts",
+      "src/render/PixiProjection.ts",
+      "src/app/App.tsx",
+      "src/app/styles.css"
+    ]
+  }
+}
