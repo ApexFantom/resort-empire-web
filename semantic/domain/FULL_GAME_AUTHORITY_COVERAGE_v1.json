@@ -42,9 +42,9 @@
     "canonical": 74,
     "fr": 66,
     "nfr": 8,
-    "proven": 16,
-    "partial": 2,
-    "unproven": 56
+    "proven": 22,
+    "partial": 3,
+    "unproven": 49
   },
   "obligations": [
     {
@@ -230,10 +230,18 @@
       "obligation": "An eligible but unpurchased area may remain deferred, and its need must not spawn until the area is bought.",
       "provenance": "S3-P0054, WR9, P0183–P0185; S4-P0071, P0163–P0168",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/areaUnlocks.test.ts",
+        "src/app/App.tsx",
+        "src/render/PixiProjection.ts",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/prototype-area-unlocks-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Eligible Prototype areas can remain deferred across waves without spawning their need; live Wave 4 kept Relax absent until Pool purchase, with deterministic coverage of the same rule."
     },
     {
       "id": "CAN-FR-012",
@@ -258,10 +266,18 @@
       "obligation": "A newly introduced need debuts softly and established needs do not simultaneously increase in that debut wave; exact ratio is tuning.",
       "provenance": "S2-P0064; S3-P0161–P0163, P0209",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/areaUnlocks.test.ts",
+        "src/app/App.tsx",
+        "src/render/PixiProjection.ts",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/prototype-area-unlocks-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Newly unlocked Relax and Ocean View debut softly at demand target 3 while established needs remain at 6; both debut transitions are deterministic- and browser-proven."
     },
     {
       "id": "CAN-FR-014",
@@ -326,10 +342,18 @@
       "obligation": "Worker assignments persist between waves; a Worker bundled with a newly unlocked normal building starts on that building.",
       "provenance": "S3-P0112–P0116; S4-P0100",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/areaUnlocks.test.ts",
+        "src/app/App.tsx",
+        "src/render/PixiProjection.ts",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/prototype-area-unlocks-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Bundled worker-2 starts on Pool/Relax and worker-3 starts on Bungalows/Ocean View; assignments persist into later waves and canonical persisted state."
     },
     {
       "id": "CAN-FR-018",
@@ -665,10 +689,18 @@
       "obligation": "Unlocking is two-step: an eligibility gate makes content available and Coins purchase it; Prototype uses milestones, MVP uses Reputation thresholds.",
       "provenance": "S2-P0059; S3-P0015, P0184–P0185, P0318; S4-P0163",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
+      "coverage_status": "PARTIAL",
       "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/areaUnlocks.test.ts",
+        "src/app/App.tsx",
+        "src/render/PixiProjection.ts",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/prototype-area-unlocks-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Prototype half is proven: Wave milestones create eligibility and Coins perform the separate purchase. MVP Reputation-threshold eligibility remains unimplemented/unproven."
     },
     {
       "id": "CAN-FR-048",
@@ -746,16 +778,20 @@
       "obligation": "Prototype starts with Reception/Restaurant/Beach Bar serving Rooms/Food/Drinks; Pool unlock adds Relax after Wave 3; Bungalows adds Ocean View after Wave 6.",
       "provenance": "S2-P0064; S3-P0034, P0125; S4-P0161",
       "epistemic_class": "A",
-      "coverage_status": "PARTIAL",
-      "closure_disposition": null,
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
       "evidence_refs": [
         "src/core/state.ts",
         "src/core/progression.test.ts",
         "src/app/App.tsx",
         "src/render/PixiProjection.ts",
-        "semantic/evidence/prototype-progression-spine-browser-acceptance-v1.json"
+        "semantic/evidence/prototype-progression-spine-browser-acceptance-v1.json",
+        "src/core/areaUnlocks.test.ts",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/prototype-area-unlocks-browser-acceptance-v1.json"
       ],
-      "coverage_note": "Canonical Prototype starting content is implemented and browser-proven: Reception/Restaurant/Beach Bar serve Rooms/Food/Drinks and all three participate in the wave. Pool→Relax after Wave 3 and Bungalows→Ocean View after Wave 6 remain unimplemented, so the full obligation stays PARTIAL."
+      "coverage_note": "Full Prototype progression is proven: Reception/Restaurant/Beach Bar serve Rooms/Food/Drinks initially; Pool adds Relax after Wave 3 purchase; Bungalows adds Ocean View after Wave 6 purchase."
     },
     {
       "id": "CAN-FR-055",
@@ -774,10 +810,18 @@
       "obligation": "Wave Needs Panel is a side panel over/alongside the island and must accommodate 3→4→5 visible needs without becoming a dense table.",
       "provenance": "S4-P0022, P0077–P0091",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
+      "coverage_status": "PARTIAL",
       "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/areaUnlocks.test.ts",
+        "src/app/App.tsx",
+        "src/render/PixiProjection.ts",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/prototype-area-unlocks-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "The UI/browser proof shows the need set expanding 3→4→5 with readable labels and soft-debut marking. The explicit side-panel spatial placement and non-dense-layout criterion has not yet received independent layout acceptance."
     },
     {
       "id": "CAN-FR-057",
@@ -848,10 +892,18 @@
       "obligation": "Area Unlock supports locked / available / not affordable / unlocked states; an available deferred unlock can be reopened; Prototype communicates new content, included Worker and Coin price.",
       "provenance": "S3-P0054, P0184–P0185; S4-P0159–P0169",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/areaUnlocks.test.ts",
+        "src/app/App.tsx",
+        "src/render/PixiProjection.ts",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/prototype-area-unlocks-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Area Unlock locked, available, not affordable and unlocked states are deterministic-proven; deferred availability, reopening, content name, bundled Worker and Coin price are also proven in live UI."
     },
     {
       "id": "CAN-FR-063",
@@ -870,10 +922,18 @@
       "obligation": "Reception/Rooms and Bungalows/Ocean View have distinct semantics: standard accommodation vs premium ocean-view experience.",
       "provenance": "S2-P0064; S3-P0126",
       "epistemic_class": "A",
-      "coverage_status": "UNPROVEN",
-      "closure_disposition": null,
-      "evidence_refs": [],
-      "coverage_note": "No claim-specific accepted implementation proof in current sealed lineage."
+      "coverage_status": "PROVEN",
+      "closure_disposition": "IMPLEMENTED_PROVEN",
+      "evidence_refs": [
+        "src/core/state.ts",
+        "src/core/areaUnlocks.test.ts",
+        "src/app/App.tsx",
+        "src/render/PixiProjection.ts",
+        "src/persistence/DexieBootstrapPersistence.ts",
+        "src/persistence/DexieBootstrapPersistence.test.ts",
+        "semantic/evidence/prototype-area-unlocks-browser-acceptance-v1.json"
+      ],
+      "coverage_note": "Reception/Rooms and Bungalows/Ocean View are modeled, forecast and rendered as distinct service/need semantics, with Bungalows/Ocean View entering only through its separate area unlock."
     },
     {
       "id": "CAN-FR-065",

@@ -1,0 +1,233 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification_id": "prototype-area-unlocks-browser-acceptance-v1",
+  "verdict": "ACCEPTED",
+  "subject": {
+    "mission_id": "resort-empire-web-full-game-v1",
+    "distance_id": "distance:resort-prototype-area-unlocks-v1",
+    "working_tree_base_commit": "6b1c34e6b8506d14cf156869f315ed61be762bec"
+  },
+  "engines": {
+    "deterministic": "Vitest",
+    "real_browser": "chrome-devtools-mcp@1.10.1"
+  },
+  "browser": {
+    "target_url": "http://127.0.0.1:5173/?proof=capacity-upgrade",
+    "decisive_page_id": 2,
+    "page_resolution": "existing isolated DEV-only proof route"
+  },
+  "assertions": {
+    "pool_locked_before_wave_3": true,
+    "pool_eligible_after_wave_3": true,
+    "eligible_pool_can_remain_deferred": true,
+    "relax_absent_until_pool_purchase": true,
+    "pool_purchase_uses_coins": true,
+    "pool_purchase_bundles_worker_2": true,
+    "relax_soft_debut": true,
+    "bungalows_eligible_after_wave_6": true,
+    "ocean_view_absent_until_bungalows_purchase": true,
+    "bungalows_purchase_uses_coins": true,
+    "bungalows_purchase_bundles_worker_3": true,
+    "ocean_view_soft_debut": true,
+    "active_need_progression_3_to_4_to_5": true,
+    "area_unlock_states_locked_available_not_affordable_unlocked": true,
+    "purchased_area_and_wave_state_survive_canonical_normalization": true,
+    "reception_rooms_distinct_from_bungalows_ocean_view": true,
+    "pixi_canvas_count": 1,
+    "console_error_count": 0
+  },
+  "observations": {
+    "initial": {
+      "wave_number": 1,
+      "phase": "awaiting",
+      "coins": 30,
+      "purchased_areas": {
+        "pool": false,
+        "bungalows": false
+      },
+      "active_needs": [
+        "reception",
+        "food",
+        "drinks"
+      ],
+      "workers": {
+        "worker-1": "reception"
+      }
+    },
+    "pool_deferred": {
+      "wave_number": 4,
+      "phase": "awaiting",
+      "coins": 30,
+      "purchased_areas": {
+        "pool": false,
+        "bungalows": false
+      },
+      "active_needs": [
+        "reception",
+        "food",
+        "drinks"
+      ],
+      "debut_needs": [],
+      "demand_targets": {
+        "reception": 6,
+        "food": 6,
+        "drinks": 6,
+        "relax": 0,
+        "oceanView": 0
+      },
+      "workers": {
+        "worker-1": "reception"
+      },
+      "ui": [
+        "Pool · Relax",
+        "Eligible after Wave 3",
+        "10 Coins · includes worker-2",
+        "Unlock Pool"
+      ]
+    },
+    "pool_purchased": {
+      "wave_number": 4,
+      "phase": "awaiting",
+      "coins": 20,
+      "purchased_areas": {
+        "pool": true,
+        "bungalows": false
+      },
+      "active_needs": [
+        "reception",
+        "food",
+        "drinks",
+        "relax"
+      ],
+      "debut_needs": [
+        "relax"
+      ],
+      "demand_targets": {
+        "reception": 6,
+        "food": 6,
+        "drinks": 6,
+        "relax": 3,
+        "oceanView": 0
+      },
+      "workers": {
+        "worker-1": "reception",
+        "worker-2": "relax"
+      },
+      "ui_soft_debut": true
+    },
+    "wave_4_complete": {
+      "served": {
+        "reception": 6,
+        "food": 6,
+        "drinks": 6,
+        "relax": 3,
+        "oceanView": 0
+      }
+    },
+    "bungalows_available": {
+      "wave_number": 6,
+      "phase": "complete",
+      "coins": 20,
+      "purchased_areas": {
+        "pool": true,
+        "bungalows": false
+      },
+      "active_needs": [
+        "reception",
+        "food",
+        "drinks",
+        "relax"
+      ],
+      "ocean_view_demand": 0,
+      "workers": {
+        "worker-1": "reception",
+        "worker-2": "relax"
+      },
+      "ui": [
+        "Bungalows · Ocean View",
+        "Eligible after Wave 6",
+        "20 Coins · includes worker-3",
+        "Unlock Bungalows"
+      ]
+    },
+    "bungalows_purchased": {
+      "wave_number": 6,
+      "phase": "complete",
+      "coins": 0,
+      "purchased_areas": {
+        "pool": true,
+        "bungalows": true
+      },
+      "active_needs": [
+        "reception",
+        "food",
+        "drinks",
+        "relax"
+      ],
+      "demand_targets": {
+        "reception": 6,
+        "food": 6,
+        "drinks": 6,
+        "relax": 6,
+        "oceanView": 0
+      },
+      "workers": {
+        "worker-1": "reception",
+        "worker-2": "relax",
+        "worker-3": "oceanView"
+      }
+    },
+    "wave_7_awaiting": {
+      "active_needs": [
+        "reception",
+        "food",
+        "drinks",
+        "relax",
+        "oceanView"
+      ],
+      "debut_needs": [
+        "oceanView"
+      ],
+      "demand_targets": {
+        "reception": 6,
+        "food": 6,
+        "drinks": 6,
+        "relax": 6,
+        "oceanView": 3
+      },
+      "workers": {
+        "worker-1": "reception",
+        "worker-2": "relax",
+        "worker-3": "oceanView"
+      },
+      "ui_soft_debut": true
+    },
+    "wave_7_complete": {
+      "served": {
+        "reception": 6,
+        "food": 6,
+        "drinks": 6,
+        "relax": 6,
+        "oceanView": 3
+      }
+    }
+  },
+  "deterministic_validation": {
+    "tests": "23/23 PASS across 6 files",
+    "coverage": [
+      "locked/available/not_affordable/unlocked Area Unlock states",
+      "deferred eligible Pool does not spawn Relax",
+      "Pool purchase adds Relax and worker-2 with soft debut",
+      "Bungalows purchase adds Ocean View and worker-3 with soft debut",
+      "legacy three-service shape migrates without activating locked areas",
+      "canonical Wave 4 + purchased Pool state survives normalizePersistedState unchanged",
+      "accepted Worker reassignment causal proof preserved with isolated test-only tuning"
+    ],
+    "production_build": "PASS",
+    "diff_check": "PASS"
+  },
+  "notes": [
+    "Prototype milestone eligibility and Coins purchase are proven; CAN-FR-047 remains PARTIAL because its MVP Reputation-threshold clause is not implemented by this Distance.",
+    "Dynamic 3→4→5 visible needs are proven; CAN-FR-056 remains PARTIAL because the explicit side-panel spatial/non-dense presentation criterion was not independently layout-accepted."
+  ]
+}
