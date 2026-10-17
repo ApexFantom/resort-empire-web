@@ -1,0 +1,99 @@
+{
+  "schema": "resort-prototype-eight-wave-playtest-evidence/v1",
+  "status": "bounded-validation-complete",
+  "checkpoint": "2d939f4f0725c202e30f2b24a0eaf2b32551b05e",
+  "authority": "RESORT_EMPIRE_REQUIREMENTS_FINAL(2).md",
+  "method": {
+    "primary": "fresh-state UI-driven browser traversal of scripted Waves 1-8",
+    "observer": "read-only __RRH_DEV__ snapshot/debug facade",
+    "interactionRule": "gameplay actions executed only through player-facing DOM controls",
+    "transportNote": "long runner response timed out at relay; causal request remained UNKNOWN, then actual page state reconciled the run at Wave 8 complete without replay"
+  },
+  "eightWaveRun": {
+    "finalWave": 8,
+    "phase": "complete",
+    "coins": 50,
+    "energy": 7,
+    "resortValue": 0,
+    "purchasedAreas": {
+      "pool": true,
+      "bungalows": true
+    },
+    "suddenRushOccurred": true,
+    "buildingLevels": {
+      "reception": 1,
+      "food": 1,
+      "drinks": 1,
+      "relax": 1,
+      "oceanView": 1
+    },
+    "finalResult": {
+      "rating": 1,
+      "bottleneckNeed": "drinks",
+      "bottleneckCause": "staffing",
+      "guidance": "Reassign a Worker to drinks when its queue grows.",
+      "totalQueuePressure": 16
+    },
+    "observedCoverage": [
+      "scripted progression reaches Wave 8 completion",
+      "Pool and Bungalows become purchasable and were purchased through UI",
+      "Sudden Rush occurred during the run",
+      "Energy was earned and one unit was consumed during the run",
+      "Worker Allocation was exercised through UI",
+      "final staffing bottleneck exposed cause-specific Worker guidance",
+      "canvas remained mounted and no Vite overlay was present"
+    ]
+  },
+  "capacityDecisionBranch": {
+    "fixture": "pre-existing ?proof=capacity-upgrade browser fixture",
+    "playerFacingActions": [
+      "Manage workers",
+      "Restaurant",
+      "Start wave",
+      "Upgrade Restaurant · Food"
+    ],
+    "result": {
+      "rating": 5,
+      "bottleneckNeed": "food",
+      "bottleneckCause": "capacity",
+      "guidance": "Consider an optional food capacity upgrade before a future wave."
+    },
+    "upgradeSuggestion": {
+      "need": "food",
+      "fromLevel": 1,
+      "toLevel": 2,
+      "beforeCapacity": 2,
+      "afterCapacity": 3,
+      "coinCost": 10,
+      "resortValueGain": 1
+    },
+    "afterClick": {
+      "foodLevel": 2,
+      "coins": 50,
+      "resortValue": 1
+    },
+    "canvasMounted": true,
+    "viteOverlay": false
+  },
+  "acceptanceAssessment": {
+    "mechanicallySupported": [
+      "AC-004 system distinguishes staffing versus capacity causes and exposes the corresponding Worker-move versus Upgrade action",
+      "AC-005 UI represents ordinary guests as aggregate forecast/need demand rather than individual guest micromanagement",
+      "AC-011 previously sealed inactivity/comeback mechanics remain compatible with this Prototype state"
+    ],
+    "humanValidationStillRequired": [
+      "AC-002 whether an actual player identifies a bottleneck and moves a Worker before being explicitly told",
+      "AC-003 whether Worker allocation feels like a meaningful choice rather than a trivial lookup",
+      "AC-005 whether an actual player understands the aggregate-demand model",
+      "AC-006 whether wave completion plus upgrade feels satisfying and whether the player can explain what to improve next",
+      "AC-007 whether Pool and Bungalows unlocks create desire to continue",
+      "AC-012 whether an actual player can explain why they want to return"
+    ],
+    "pacingBoundary": "Automated execution does not validate the stated 12-20 minute human Prototype playtest experience or the 3-7 minute normal-session product target; exact Prototype wave/service timings are tuning rather than hard requirements."
+  },
+  "classification": {
+    "actionableMechanicalPrototypeDefects": [],
+    "automatedMechanicalVerdict": "PASS",
+    "humanFeelVerdict": "PENDING_HUMAN_PLAYTEST"
+  }
+}
