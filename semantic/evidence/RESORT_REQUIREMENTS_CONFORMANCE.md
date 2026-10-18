@@ -176,3 +176,25 @@ FR-007 was repaired and is now implemented and proven. Staffing shortage and ins
 ### Conclusion
 
 FR-008 was repaired and is now implemented and proven. Satisfaction has an explicit canonical accumulated-wait basis, and queue-to-service accounting proves that waiting ceases as soon as a demand unit enters active service. The final Satisfaction curve/star thresholds remain intentionally unresolved OPEN/TUNING authority rather than being invented here.
+
+## FR-009 — IMPLEMENTED_PROVEN
+
+**Verdict:** PASS
+**Disposition:** IMPLEMENTED_PROVEN
+
+**Bound obligation:** During an active normal wave, the system shall not expose per-guest patience countdowns or a live numeric Wave Satisfaction value, and normal guests shall not leave mechanically because of waiting time.
+
+### Evidence
+
+- `RESORT_EMPIRE_REQUIREMENTS_FINAL(3).md` — exact canonical FR-009 authority.
+- Source-wide scan across `src/**/*.ts`, `src/**/*.tsx` and `src/**/*.css` found no patience/countdown/abandon/departure/leave mechanics. The only Satisfaction symbols are the completed-wave model and its FR-008 regression.
+- Normal guests are already represented as aggregate demand rather than individual service entities, so there is no per-guest patience state to expose.
+- `src/app/App.tsx` active-wave branches (`incoming` / `draining`) expose aggregate waiting/being-served flow and service actions only. Completed `wave.result` data is gated behind the completed branch, so no live numeric Wave Satisfaction is projected during active play.
+- `src/core/fr009NonPunitiveActiveWave.test.ts` proves released demand is conserved on every active tick as `served + active + queued = released` per active need while queues exist, proving waiting demand does not disappear through abandonment.
+- The same regression proves `normalWave.result` remains `null` throughout active play and only completed-wave state exposes the accumulated-wait Satisfaction result.
+- The regression also proves all released normal demand is ultimately served by completion despite sustained queue pressure.
+- Fresh validation batch on 2026-10-18 completed successfully: targeted FR-009 regression PASS, full suite PASS (20 files / 52 tests), production TypeScript/Vite build PASS, and `git diff --check` PASS.
+
+### Conclusion
+
+FR-009 is implemented and proven without gameplay repair. Active normal waves have no per-guest patience countdown, expose no live numeric Wave Satisfaction, and retain waiting normal demand in the queue/service system until it is served rather than mechanically removing guests because they waited.
