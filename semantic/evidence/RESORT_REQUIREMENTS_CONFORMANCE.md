@@ -154,3 +154,25 @@ FR-006 was repaired and is now implemented and proven. Operational state is a pu
 ### Conclusion
 
 FR-007 was repaired and is now implemented and proven. Staffing shortage and insufficient building capacity are distinct canonical live diagnoses while a queue is present, and the active player-facing service projection exposes that distinction without a shadow UI-owned cause model.
+
+## FR-008 — IMPLEMENTED_PROVEN
+
+**Verdict:** PASS
+**Disposition:** IMPLEMENTED_PROVEN
+
+**Bound obligation:** Normal-wave Satisfaction shall be derived from accumulated waiting time of need units, and a unit shall stop accumulating waiting once service begins.
+
+### Evidence
+
+- `RESORT_EMPIRE_REQUIREMENTS_FINAL(3).md` — exact canonical FR-008 authority. FINAL(3) also explicitly keeps the final Satisfaction curve and exact star thresholds OPEN/TUNING, so this repair does not invent a percentage scale, curve or thresholds.
+- Pre-repair source-wide inspection found no canonical Satisfaction symbol/model, establishing a real PARTIAL gap, while the existing queue/service accounting already retained the required waiting history.
+- `src/core/state.ts::advanceWave()` admits waiting demand into active service first, computes `remaining = waiting - admitted`, and increments `accumulatedWaitByNeed[need]` only by that remaining queued demand. Units admitted to active service therefore cease adding waiting immediately.
+- `src/core/state.ts` now defines canonical `NormalWaveSatisfaction` and records it in `NormalWaveResult`. Its explicit basis is `accumulated_wait`, with total accumulated waiting and immutable per-need waiting history.
+- `src/core/state.ts::satisfactionFor()` derives completed-wave Satisfaction exclusively from `accumulatedWaitByNeed`; no new gameplay tuning or shadow UI calculation was introduced.
+- `src/core/fr008Satisfaction.test.ts` deterministically proves: Food has one queued and one active unit; accumulated wait rises to 1; on the following tick the queued unit is admitted while accumulated wait remains 1; after service completes it still remains 1; completed Satisfaction preserves exactly that accumulated-wait history.
+- Fresh validation batch on 2026-10-18 completed successfully: targeted FR-008 regression PASS, full test suite PASS, production TypeScript/Vite build PASS, and `git diff --check` PASS.
+- No live numeric Satisfaction UI was added. This preserves adjacent FINAL(3) FR-009, which forbids a live numeric Wave Satisfaction value during an active normal wave; post-wave Satisfaction presentation remains the responsibility of FR-011.
+
+### Conclusion
+
+FR-008 was repaired and is now implemented and proven. Satisfaction has an explicit canonical accumulated-wait basis, and queue-to-service accounting proves that waiting ceases as soon as a demand unit enters active service. The final Satisfaction curve/star thresholds remain intentionally unresolved OPEN/TUNING authority rather than being invented here.
