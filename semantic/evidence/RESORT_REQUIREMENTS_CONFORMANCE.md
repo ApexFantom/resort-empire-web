@@ -68,3 +68,24 @@ FR-002 is implemented and proven by canonical source semantics plus a dedicated 
 ### Conclusion
 
 FR-003 is implemented and proven. Arrival shutdown stops only new demand release; outstanding service drains to completion while applicable Worker reassignment and Energy actions remain available. No gameplay repair remains for this obligation.
+
+## FR-004 — IMPLEMENTED_PROVEN
+
+**Verdict:** PASS
+**Disposition:** IMPLEMENTED_PROVEN
+
+**Bound obligation:** Normal guests shall be represented and managed as aggregate demand rather than individually controlled service entities.
+
+### Evidence
+
+- `RESORT_EMPIRE_REQUIREMENTS_FINAL(3).md` — exact canonical FR-004 authority recovered from the bound Project file.
+- `src/core/state.ts:164-188` — canonical `NormalWaveState` represents normal guest demand only as aggregate per-need counters: demand target, released, queued, active-service, served, wait history and pressure; it owns no per-guest identity, position, path or service-entity state.
+- `src/core/state.ts:204-212` — canonical `BootstrapCommand` exposes simulation, wave, area, building, Worker, Energy and comeback controls only; there is no command for selecting, moving, assigning or otherwise controlling an individual normal guest.
+- `src/core/state.ts:249-277` — normal-wave construction initializes aggregate `NeedCounts` for demand/release/queue/active/served state from the wave demand profile.
+- Targeted source scan of `src/core` found zero matches for guest identity, individual-guest control, guest position/path or pathfinding authority (`MATCH_COUNT 0`).
+- `src/render/ResortGuestFlowActivity.tsx:86-101` — Three/R3F guest figures are a derived presentation only: their counts are capped projections of canonical `queueByNeed`, `activeByNeed` and `servedByNeed`. They do not own or mutate gameplay state.
+- Targeted source scan of `src/render` + `src/app` likewise found zero guest-level command/id/path authority (`MATCH_COUNT 0`).
+
+### Conclusion
+
+FR-004 is implemented and proven. Normal guests are governed exclusively through aggregate demand/service counts in the canonical core; animated guest figures are replaceable read-only projections of that aggregate state, not individually controllable gameplay entities. No repair remains for this obligation.
