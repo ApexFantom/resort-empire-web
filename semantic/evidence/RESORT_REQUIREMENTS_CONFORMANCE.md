@@ -89,3 +89,25 @@ FR-003 is implemented and proven. Arrival shutdown stops only new demand release
 ### Conclusion
 
 FR-004 is implemented and proven. Normal guests are governed exclusively through aggregate demand/service counts in the canonical core; animated guest figures are replaceable read-only projections of that aggregate state, not individually controllable gameplay entities. No repair remains for this obligation.
+
+## FR-005 — IMPLEMENTED_PROVEN
+
+**Verdict:** PASS
+**Disposition:** IMPLEMENTED_PROVEN
+
+**Bound obligation:** For each active normal need, the system shall track served, active-service and waiting demand against finite simultaneous service capacity, placing excess demand into a queue.
+
+### Evidence
+
+- `RESORT_EMPIRE_REQUIREMENTS_FINAL(3).md` — exact canonical FR-005 authority recovered from the bound Project file.
+- `src/core/state.ts:164-181` — canonical `NormalWaveState` owns distinct aggregate `queueByNeed`, `activeByNeed`, `servedByNeed`, demand and wait/pressure counters for every normal need.
+- `src/core/state.ts:280-284` — `capacity(wave, need)` computes finite simultaneous capacity from base service capacity, building-level capacity bonus and currently assigned Workers.
+- `src/core/state.ts:413-428` — each simulation step first transfers prior active service into `servedByNeed`, combines prior queue plus newly released demand as waiting demand, admits at most `simultaneousCapacity`, writes admitted demand to `activeByNeed`, and writes the remainder to `queueByNeed`.
+- `src/core/state.ts:317-319` — `normalWaveServiceCapacity()` exposes the same canonical finite capacity calculation for deterministic verification.
+- `src/core/runtime.test.ts:160-199` — deterministic regression starts a normal wave, proves `food` has excess queued demand while `activeByNeed.food` is simultaneously nonzero and exactly equals its finite service capacity, then advances simulation and proves `servedByNeed.food` increases.
+- Fresh targeted validation on 2026-10-18: `vitest run src/core/runtime.test.ts` — 7/7 tests PASS.
+- Fresh enclosing validation on 2026-10-18: full suite — 16 files / 48 tests PASS; production `tsc --noEmit && vite build` PASS.
+
+### Conclusion
+
+FR-005 is implemented and proven. For an active normal need, waiting, active-service and served demand are distinct canonical quantities; finite simultaneous service capacity bounds admission and excess demand remains queued until later service cycles. No gameplay repair remains for this obligation.
