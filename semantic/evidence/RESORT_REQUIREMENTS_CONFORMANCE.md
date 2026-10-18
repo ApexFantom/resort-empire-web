@@ -111,3 +111,24 @@ FR-004 is implemented and proven. Normal guests are governed exclusively through
 ### Conclusion
 
 FR-005 is implemented and proven. For an active normal need, waiting, active-service and served demand are distinct canonical quantities; finite simultaneous service capacity bounds admission and excess demand remains queued until later service cycles. No gameplay repair remains for this obligation.
+
+## FR-006 — IMPLEMENTED_PROVEN
+
+**Verdict:** PASS
+**Disposition:** IMPLEMENTED_PROVEN
+
+**Bound obligation:** The system shall derive and expose normal-need operational states such as BOTTLENECK, RECOVERING and SATISFIED from queue/service conditions.
+
+### Evidence
+
+- `RESORT_EMPIRE_REQUIREMENTS_FINAL(3).md` — exact canonical FR-006 authority recovered from the bound Project file.
+- Pre-repair inspection proved the requirement was genuinely PARTIAL: `src/core` had no canonical normal-need operational-state type/selector, while `src/app/App.tsx` locally inferred presentation text from raw queue counters.
+- `src/core/state.ts` now exports canonical `NormalNeedOperationalState = 'BOTTLENECK' | 'RECOVERING' | 'SATISFIED'`.
+- `src/core/state.ts::normalNeedOperationalState()` derives operational state only from canonical active-need, queue and active-service conditions: queued demand => BOTTLENECK; no queue with active service => RECOVERING; otherwise => SATISFIED.
+- `src/app/App.tsx` now consumes `normalNeedOperationalState(snapshot, need)` for the per-need service status projection instead of recomputing a separate UI-owned need state from raw counters.
+- `src/core/fr006OperationalState.test.ts` deterministically proves a real normal-wave trajectory through SATISFIED before load, BOTTLENECK while queue and active service coexist, RECOVERING once the queue clears but active service remains, and SATISFIED once both queue and active service clear.
+- Fresh validation batch on 2026-10-18 completed successfully: targeted FR-006 regression PASS, full test suite PASS, production TypeScript/Vite build PASS, and `git diff --check` PASS.
+
+### Conclusion
+
+FR-006 was repaired and is now implemented and proven. Operational state is a pure canonical-core derivation of queue/service conditions and the React UI exposes that derived authority rather than maintaining a shadow presentation model. No repair remains for this obligation.
