@@ -47,3 +47,24 @@ FR-001 is implemented and proven across canonical source semantics, deterministi
 ### Conclusion
 
 FR-002 is implemented and proven by canonical source semantics plus a dedicated deterministic regression. No gameplay repair remains for this obligation.
+
+## FR-003 — IMPLEMENTED_PROVEN
+
+**Verdict:** PASS
+**Disposition:** IMPLEMENTED_PROVEN
+
+**Bound obligation:** When the arrival period ends, only new arrivals shall stop; the wave shall continue until outstanding queues are cleared, with Worker reassignment and applicable Energy actions still available during drain.
+
+### Evidence
+
+- `RESORT_EMPIRE_REQUIREMENTS_FINAL(3).md` — exact canonical FR-003 authority recovered from the bound Project file.
+- `src/core/state.ts:403-435` — canonical `advanceWave()` sets `releasedNow` to zero outside `incoming`, retains unresolved queue/active service during `draining`, and reaches `complete` only when both queues and active service are empty.
+- `src/core/state.ts:517-562` — canonical `REASSIGN_WORKER` explicitly permits `awaiting`, `incoming` and `draining`; a legal reassignment during drain mutates canonical worker allocation and records reassignment impact.
+- `src/core/state.ts:564-569` — canonical `ACTIVATE_ENERGY_MODE` explicitly permits `incoming` and `draining`; when the target need is active, Energy is available and no boost is already active, activation spends one Energy and installs the canonical Energy mode.
+- `src/core/fr003DrainActions.test.ts` — dedicated deterministic regression first completes Wave 1 to earn Energy legally, starts Wave 2, reaches a real drain state with outstanding work, proves Worker reassignment during drain, restores the Worker, activates Energy during drain, proves released demand remains frozen, and continues to completion with queues and active service cleared.
+- Fresh targeted validation on 2026-10-18: `vitest run src/core/fr003DrainActions.test.ts` — PASS.
+- Fresh enclosing validation on 2026-10-18: full test suite and production build both completed successfully in the same host-validation batch after the corrected FR-003 regression.
+
+### Conclusion
+
+FR-003 is implemented and proven. Arrival shutdown stops only new demand release; outstanding service drains to completion while applicable Worker reassignment and Energy actions remain available. No gameplay repair remains for this obligation.
