@@ -44,10 +44,9 @@ Progress is stored locally in the browser using IndexedDB through Dexie. Reloadi
 - `src/core/` — deterministic gameplay state, economy and progression
 - `src/runtime/` — simulation clock and inactivity behavior
 - `src/app/` — React HUD and player controls
-- `src/world/` — PixiJS resort-world projection
+- `src/render/` — Three.js / React Three Fiber resort world, procedural art, environment and activity projection
 - `src/persistence/` — browser persistence
-- `public/assets/world/` — editable SVG building and area artwork
 
 ## Main technology
 
-React, TypeScript, PixiJS, Dexie, Vite and Vitest.
+React, TypeScript, Three.js, React Three Fiber, Dexie, Vite and Vitest.
