@@ -132,3 +132,25 @@ FR-005 is implemented and proven. For an active normal need, waiting, active-ser
 ### Conclusion
 
 FR-006 was repaired and is now implemented and proven. Operational state is a pure canonical-core derivation of queue/service conditions and the React UI exposes that derived authority rather than maintaining a shadow presentation model. No repair remains for this obligation.
+
+## FR-007 — IMPLEMENTED_PROVEN
+
+**Verdict:** PASS
+**Disposition:** IMPLEMENTED_PROVEN
+
+**Bound obligation:** The player shall be able to distinguish a staffing shortage from insufficient building capacity when either causes a growing queue.
+
+### Evidence
+
+- `RESORT_EMPIRE_REQUIREMENTS_FINAL(3).md` — exact canonical FR-007 authority recovered from the bound Project file.
+- Pre-repair inspection established a real PARTIAL gap: canonical simulation accumulated separate `staffingWaitByNeed` and `capacityWaitByNeed`, but `bottleneckCause` and causal guidance were derived only in `resultFor()` after wave completion.
+- `src/core/state.ts::advanceWave()` already classifies queued waiting pressure by staffing topology: queued demand with zero assigned Workers increments staffing pressure; queued demand with staffing present increments capacity pressure.
+- `src/core/state.ts::normalNeedBottleneckCause()` now exposes the live canonical diagnosis while a need has queued demand, returning `staffing` when the need has no assigned Worker, `capacity` when it is staffed but saturated, and `null` when no queue remains.
+- `src/app/App.tsx` consumes that selector in the active per-need building status, exposing `BOTTLENECK · STAFFING` versus `BOTTLENECK · CAPACITY` to the player during the queue rather than waiting for end-of-wave results.
+- `src/core/fr007BottleneckDiagnosis.test.ts` deterministically proves both active-wave causes using the same finite-capacity model and proves the diagnosis clears once the queue resolves.
+- Existing completed-wave regression in `src/core/runtime.test.ts` continues to prove historical result diagnosis and worker-vs-upgrade guidance for staffing and capacity causes respectively.
+- Fresh validation batch on 2026-10-18 completed successfully: targeted FR-007 regression PASS, full test suite PASS, production TypeScript/Vite build PASS, and `git diff --check` PASS.
+
+### Conclusion
+
+FR-007 was repaired and is now implemented and proven. Staffing shortage and insufficient building capacity are distinct canonical live diagnoses while a queue is present, and the active player-facing service projection exposes that distinction without a shadow UI-owned cause model.
