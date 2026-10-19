@@ -1,4 +1,5 @@
 # Resort Empire
+<img width="1260" height="806" alt="image" src="https://github.com/user-attachments/assets/6198595f-b89b-46e0-951d-8fdea772f05e" />
 
 Resort Empire is a browser management-game prototype about keeping a living resort economy flowing across an eight-wave campaign. Guests create demand across resort services; the player manages workers, service capacity, upgrades and area expansion while reacting to queues and bottlenecks.
 
