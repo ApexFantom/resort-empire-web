@@ -1,0 +1,75 @@
+{
+  "schema": "resort-verification-result/v1",
+  "verification_id": "fr011-wave-completion-desktop-mobile-v1",
+  "verdict": "PASS",
+  "requirement": "FR-011",
+  "authority": "RESORT_EMPIRE_REQUIREMENTS_FINAL(3).md:274",
+  "implementation": [
+    "src/app/WaveCompletionSummary.tsx",
+    "src/app/App.tsx",
+    "src/app/fr011WaveCompletion.test.ts"
+  ],
+  "browser": {
+    "adapter": "official chrome-devtools-mcp@1.10.1",
+    "pageId": 2,
+    "url": "http://127.0.0.1:5173/",
+    "gameplayMutation": "canonical Start wave UI button only",
+    "clockOverride": false
+  },
+  "desktop": {
+    "acceptance": "r96/a1121",
+    "geometry": "r96/a1122",
+    "corePhase": "complete",
+    "rating": 5,
+    "satisfaction": {
+      "basis": "accumulated_wait",
+      "totalWaitingTime": 0
+    },
+    "serviceRequestsCompleted": 22,
+    "serviceRequestsRequested": 22,
+    "improvement": "Reception (capacity); optional reception capacity upgrade",
+    "reviewVisible": true,
+    "documentHorizontalOverflow": false
+  },
+  "mobile320": {
+    "acceptance": "r96/a1126",
+    "corePhase": "complete",
+    "simulationTick": 343,
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "devicePixelRatio": 2
+    },
+    "rating": 5,
+    "satisfaction": {
+      "basis": "accumulated_wait",
+      "totalWaitingTime": 0
+    },
+    "serviceRequestsCompleted": 22,
+    "serviceRequestsRequested": 22,
+    "requiredFields": {
+      "rating": true,
+      "satisfaction": true,
+      "whatWentWell": true,
+      "whatToImprove": true
+    },
+    "reviewRect": {
+      "left": 33,
+      "right": 287,
+      "top": 301.546875,
+      "bottom": 461
+    },
+    "fitsViewport": true,
+    "reviewInternallyClipped": false,
+    "documentHorizontalOverflow": false
+  },
+  "validation": {
+    "targetedReactRegression": "PASS (r96/a1112)",
+    "fullVitest": "PASS (24 files, 59 tests; r96/a1112)",
+    "productionBuild": "PASS (TypeScript and Vite; r96/a1113)"
+  },
+  "limits": [
+    "390x844 device-emulation command succeeded but preceded a fresh awaiting session; no completed-wave claim is made for that viewport.",
+    "Separate final-wave-specific presentation has not been asserted by this FR-011 acceptance."
+  ]
+}
